@@ -20,6 +20,6 @@ function repeat(str, times) {
 	return c
 }
 
-console.log(join([1, 2, 3], ''));
+console.log(join([1, 2, 3], ''),join(["a", "b", "c"], "!"),join(["aaa", "bb", "c", "dddd"], ',,'));
 console.log(repeat('yoyo', 2));
 
