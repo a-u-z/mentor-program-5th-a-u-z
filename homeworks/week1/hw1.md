@@ -7,7 +7,7 @@
 5. 在 terminal 輸入 `cd mentor-program-5th-a-u-z` // 移動到 mentor-program-5th-a-u-z 這個資料夾
 6. 在 terminal 輸入 `cd homeworks`  // 移動到 homeworks 這個資料夾
 7. 在 terminal 輸入 `cd week1` // 移動到 week1 這個資料夾
-8. 在 terminal 輸入 `git checkout -b week1_branch` // 用 git 指令，開一個叫做 week1 的分支，並且移動到上面
+8. 在 terminal 輸入 `git checkout -b week1_branch` // 用 git 指令，開一個叫做 week1_branch 的分支，並且移動到上面
 9. 開始寫作業，並且存檔，然後休息，其他的等下一個番茄鐘再做😀
 10. 如果有新增檔案，要先 add 。
 11. 在 terminal（目前還是在 week1 這個資料夾底下喔）  輸入 `git commit -am "hw1_finished"` // 把做過更動的檔案（也就是上面存檔的） add 加上 commit 一起做完 並說這次是 hw1 完成了
