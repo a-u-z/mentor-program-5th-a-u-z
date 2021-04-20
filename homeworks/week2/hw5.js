@@ -9,9 +9,6 @@ function join(arr, concatStr) {
 	}
 	return result
 }
-
-
-
 function repeat(str, times) {
 	var result = ''
 	for(i = 1; i <= times; i ++){
@@ -19,7 +16,5 @@ function repeat(str, times) {
 	}
 	return result
 }
-
 console.log(join([1, 2, 3], ''),join(["a", "b", "c"], "!"),join(["aaa", "bb", "c", "dddd"], ',,'));
 console.log(repeat('yoyo', 2));
-
