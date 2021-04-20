@@ -10,8 +10,4 @@ else
 	echo '參數有誤'
 fi
 # http://linux.vbird.org/linux_basic/0340bashshell-scripts.php#for
-<<<<<<< HEAD
-# http://linux.vbird.org/linux_basic/0340bashshell-scripts.php#for
-=======
->>>>>>> d4ef2922ba8b3dc5fae925ce822f26cbcff410e8
 # https://crmne0707.pixnet.net/blog/post/315013815-shell-script-教學-判斷式
