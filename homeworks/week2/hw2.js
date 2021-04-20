@@ -1,14 +1,14 @@
-function capitalize(str) {
-  if(str[0]>='a'&&str[0]<='z'){
-		var c=''
-		c=str[0].toUpperCase()
-		var g=''
-		for(i=1; i<str.length; i++){
-			g=g+str[i]
+function capitalize(str){
+	if(str[0] >= 'a' && str[0] <= 'z'){
+		var changeToCapital = ''
+		changeToCapital = str[0].toUpperCase()
+		var others=''
+		for(i = 1; i < str.length; i ++){
+			others += str[i]
 		}
-		return(c+g)
+		return (changeToCapital + others)
 	}else{
-		return(str)
+		return (str)
 	}
 }
 console.log(capitalize(',hello'));
