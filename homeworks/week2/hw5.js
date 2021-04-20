@@ -1,23 +1,23 @@
 function join(arr, concatStr) {
-	var c=''
-	for(i=0; i<arr.length; i++){
-		if(arr.length-1>i){
-			c=c+arr[i]+concatStr
+	var result= ''
+	for(i = 0; i < arr.length; i ++){
+		if(arr.length - 1 > i){
+			result = result + arr[i] + concatStr
 		}else{
-			c=c+arr[i]
+			result = result + arr[i]
 		}
 	}
-	return c
+	return result
 }
 
 
 
 function repeat(str, times) {
-	var c=''
-	for(i=1; i<=times; i++){
-		c=c+str
+	var result = ''
+	for(i = 1; i <= times; i ++){
+		result = result + str
 	}
-	return c
+	return result
 }
 
 console.log(join([1, 2, 3], ''),join(["a", "b", "c"], "!"),join(["aaa", "bb", "c", "dddd"], ',,'));
