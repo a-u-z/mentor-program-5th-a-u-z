@@ -23,4 +23,5 @@ function printStars(n) {
 	}
 }
 printStars(1.5)
+不用考慮超出範圍的參數
 */

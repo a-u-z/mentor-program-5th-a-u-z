@@ -18,6 +18,7 @@ function search(array,target){
 	}
 	return -1
 }
+/* 測試資料
 console.log(search([6, 10], 5))
 console.log(search([6, 10], 11))
 console.log(search([6, 10], 6))
@@ -32,6 +33,7 @@ console.log(search([2, 3, 10, 14, 39], 10))
 console.log(search([2, 3, 10, 14, 39], 14))
 console.log(search([2, 3, 10, 14, 39], 39))
 console.log(search([2, 3, 10, 14, 39], 93))
+*/
 /*
 function search(array,target){
 	if(target > array[array.length - 1]){

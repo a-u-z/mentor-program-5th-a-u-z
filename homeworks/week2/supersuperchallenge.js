@@ -1,5 +1,3 @@
-// https://www.youtube.com/watch?v=TFlv8yZBtDo
-debugger
 function multiply(a, b) {
 	let A = ""
 	A += a
@@ -38,10 +36,8 @@ function multiply(a, b) {
 	}
 	return r
 }
-console.log(multiply("98765", "56894"))
-
-
 // https://www.youtube.com/watch?v=TFlv8yZBtDo
+/*
 function multiply(a, b) {
 	let result = new Array(a.length + b.length).fill(0)
 	for(i = a.length - 1; i >= 0; i --){
@@ -80,3 +76,4 @@ function multiply(a, b) {
 	return r
 }
 console.log(multiply("98765", "56894")) // 5619135910
+*/
