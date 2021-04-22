@@ -1,23 +1,23 @@
-var readline = require('readline');
-var rl = readline.createInterface({
+const readline = require('readline')
+
+const rl = readline.createInterface({
   input: process.stdin
-});
-var lines = []
-rl.on('line', function (line) {
+})
+const lines = []
+rl.on('line', (line) => {
   lines.push(line)
-});
-rl.on('close', function() {
+})
+rl.on('close', () => {
   solve(lines)
 })
-
-function solve(lines){
-  let starNumbers = Number(lines[0])
+function solve(lines) {
+  const starNumbers = Number(lines[0])
   printStar(starNumbers)
 }
-function printStar(n){
+function printStar(n) {
   let result = ''
-  for(let i = 1; i <= n; i ++){
-	  result += '*'
-	  console.log(result)
-  }
+  for (let i = 1; i <= n; i++) {
+    result += '*'
+    console.log(result)
+  } // 測試 eslint
 }
