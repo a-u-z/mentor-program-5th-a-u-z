@@ -11,13 +11,13 @@ rl.on('close', function() {
 })
 
 function solve(lines){
-	let starNumbers = Number(lines[0])
-	return star(starNumbers)
+  let starNumbers = Number(lines[0])
+  printStar(starNumbers)
 }
-function star(n){
-	let result = ''
-	for(i = 1; i <= n; i ++){
-		result += '*'
-		console.log(result)
-	}
+function printStar(n){
+  let result = ''
+  for(let i = 1; i <= n; i ++){
+	  result += '*'
+	  console.log(result)
+  }
 }

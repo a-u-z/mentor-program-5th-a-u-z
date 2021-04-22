@@ -11,17 +11,13 @@ rl.on('close', function() {
 })
 
 function solve(lines) {
-	var temp = lines[0]
-	console.log(isReverse(temp)?'True':'False')
+  var temp = lines[0]
+  console.log(isReverse(temp)?'True':'False')
 }
 function isReverse(temp){
-	var reverse = ''
-	for(i = temp.length - 1; i >= 0; i --){
-		reverse += temp[i]
-	}
-	if(reverse === temp){
-		return true
-	}else{
-		return false
-	}
+  var reverse = ''
+  for(let i = temp.length - 1; i >= 0; i --){
+	  reverse += temp[i]
+  }
+  return reverse === temp
 }
