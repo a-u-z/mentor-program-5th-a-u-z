@@ -19,5 +19,5 @@ function printStar(n) {
   for (let i = 1; i <= n; i++) {
     result += '*'
     console.log(result)
-  } // 測試 eslint
+  }
 }
