@@ -12,8 +12,7 @@ rl.on('close', () => {
 })
 function solve(lines) {
   const loopsNumbers = Number(lines[0])
-  // eslint-disable-next-line
-  for (let i = 1; i <= loopsNumbers; i ++) {
+  for (let i = 1; i <= loopsNumbers; i++) {
     const [A, B, K] = lines[i].split(' ')
     console.log(compare(A, B, K))
   }
