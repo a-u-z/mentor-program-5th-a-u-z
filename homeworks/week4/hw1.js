@@ -11,7 +11,7 @@ request(
     }
     console.log(json)
     for (let i = 0; i <= 9; i++) {
-      console.log(`${i} 1 + ${json[i].name}`)
+      console.log(`${i + 1} ${json[i].name}`)
     }
   }
 )
