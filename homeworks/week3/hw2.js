@@ -17,16 +17,14 @@ function solve(lines) {
   return flower(startNumbers, endNumbers)
 }
 function flower(startNumbers, endNumbers) {
-  // eslint-disable-next-line
-  for (let i = startNumbers; i <= endNumbers; i ++) {
+  for (let i = startNumbers; i <= endNumbers; i++) {
     if (isflower(i)) console.log(i)
   }
 }
 function isflower(n) {
   let sum = 0
   const nString = n.toString()
-  // eslint-disable-next-line
-  for (let j = 0; j < nString.length; j ++) {
+  for (let j = 0; j < nString.length; j++) {
     sum += Math.pow(nString[j], nString.length)
   }
   return sum === n
