@@ -1,23 +1,24 @@
-var readline = require('readline');
-var rl = readline.createInterface({
+const readline = require('readline')
+
+const rl = readline.createInterface({
   input: process.stdin
-});
-var lines = []
-rl.on('line', function (line) {
+})
+const lines = []
+rl.on('line', (line) => {
   lines.push(line)
-});
-rl.on('close', function() {
+})
+rl.on('close', () => {
   solve(lines)
 })
-
 function solve(lines) {
-  var temp = lines[0]
-  console.log(isReverse(temp)?'True':'False')
+  const temp = lines[0]
+  console.log(isReverse(temp) ? 'True' : 'False')
 }
-function isReverse(temp){
-  var reverse = ''
-  for(let i = temp.length - 1; i >= 0; i --){
-	  reverse += temp[i]
+function isReverse(temp) {
+  let reverse = ''
+  // eslint-disable-next-line
+  for (let i = temp.length - 1; i >= 0; i --) {
+    reverse += temp[i]
   }
   return reverse === temp
 }

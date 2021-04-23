@@ -1,32 +1,33 @@
-var readline = require('readline');
-var rl = readline.createInterface({
+const readline = require('readline')
+
+const rl = readline.createInterface({
   input: process.stdin
-});
-var lines = []
-rl.on('line', function (line) {
+})
+const lines = []
+rl.on('line', (line) => {
   lines.push(line)
-});
-rl.on('close', function() {
+})
+rl.on('close', () => {
   solve(lines)
 })
-
-function solve(lines){
-  let temp = lines[0].split(' ')
-  let startNumbers = Number(temp[0])
-  let endNumbers = Number(temp[1])
-  return flower(startNumbers,endNumbers)
+function solve(lines) {
+  const temp = lines[0].split(' ')
+  const startNumbers = Number(temp[0])
+  const endNumbers = Number(temp[1])
+  return flower(startNumbers, endNumbers)
 }
-function flower(startNumbers,endNumbers){
-  for(let i = startNumbers; i <= endNumbers; i ++){
-	  if(isflower(i)) console.log(i)
+function flower(startNumbers, endNumbers) {
+  // eslint-disable-next-line
+  for (let i = startNumbers; i <= endNumbers; i ++) {
+    if (isflower(i)) console.log(i)
   }
 }
-debugger
-function isflower(n){
+function isflower(n) {
   let sum = 0
-  let nString = n.toString()
-  for(let j = 0;j < nString.length; j ++){
-	  sum += Math.pow(nString[j],nString.length)
+  const nString = n.toString()
+  // eslint-disable-next-line
+  for (let j = 0; j < nString.length; j ++) {
+    sum += Math.pow(nString[j], nString.length)
   }
   return sum === n
 }
