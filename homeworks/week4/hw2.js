@@ -8,7 +8,7 @@ if (process.argv[2] === 'list') {
       url: 'https://lidemy-book-store.herokuapp.com/books?_limit=20'
     },
     (error, response, body) => {
-      if (response.statusCode >= 200 && response.statusCode < 300) {
+      if (response.statusCode >= 200 && response.statusCode < 300) { // 如果有成功的話，才執行後面
         let json = JSON.parse(body) // 把拿回來的 response 轉成 json 的物件
         try { // 測試看看抓到的資料是否是正規的 json 格式
           json = JSON.parse(body)
