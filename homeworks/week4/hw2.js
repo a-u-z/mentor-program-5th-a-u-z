@@ -1,6 +1,6 @@
-const request = require('request')
+const request = require('request') // 引入 request 函式，如果有問題，可以上 github 去看 request 的文件
 
-const process = require('process')
+const process = require('process') // 引入 node js 內建的函式，用來引入參數
 
 if (process.argv[2] === 'list') {
   request(
