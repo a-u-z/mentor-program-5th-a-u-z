@@ -5,6 +5,9 @@ const process = require('process')
 request(
   `https://restcountries.eu/rest/v2/name/${process.argv[2]}`,
   (error, response, body) => {
+    if (!process.argv[2]) {
+      return console.log('請輸入國家名稱')
+    }
     if (response.statusCode >= 200 && response.statusCode < 300) {
       const json = JSON.parse(body)
       if (json.length > 1) {
