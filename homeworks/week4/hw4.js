@@ -9,9 +9,9 @@ request({
   }
 },
 (error, response, body) => {
-  const a = JSON.parse(body)
+  const games = JSON.parse(body)
   for (let i = 0; i < 10; i++) {
-    console.log(`${a.top[i].viewers} ${a.top[i].game.name}`)
+    console.log(`${games.top[i].viewers} ${games.top[i].game.name}`)
   }
 }
 )

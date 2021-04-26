@@ -8,8 +8,8 @@ request(
       json = JSON.parse(body)
     } catch (e) {
       console.log(e) // 錯誤處理
+      return
     }
-    console.log(json)
     for (let i = 0; i <= 9; i++) {
       console.log(`${i + 1} ${json[i].name}`)
     }
