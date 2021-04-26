@@ -1,8 +1,8 @@
-function cool() {
+function cool() { // 這個 cool function 是為了讓 下面這個 if 可以 return ，來躲過 eslint
   const request = require('request')
 
   const process = require('process')
-  if (!process.argv[2]) {
+  if (!process.argv[2]) { // 這個 if
     return console.log('請輸入國家名稱')
   }
   request(
