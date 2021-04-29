@@ -1,17 +1,17 @@
 const request = require('request')
 
+const url = 'https://lidemy-book-store.herokuapp.com/books?_limit=10'
 request(
-  'https://lidemy-book-store.herokuapp.com/books?_limit=10',
+  url,
   (error, response, body) => {
-    let json = JSON.parse(body)
+    let bookArray = JSON.parse(body)
     try {
-      json = JSON.parse(body)
+      bookArray = JSON.parse(body)
+      for (let i = 0; i <= 9; i++) {
+        console.log(`${i + 1} ${bookArray[i].name}`)
+      }
     } catch (e) {
       console.log(e) // 錯誤處理
-      return
-    }
-    for (let i = 0; i <= 9; i++) {
-      console.log(`${i + 1} ${json[i].name}`)
     }
   }
 )
