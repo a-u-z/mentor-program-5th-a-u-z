@@ -11,32 +11,37 @@ rl.on('close', () => {
   solve(lines)
 })
 function solve(lines) {
-  const amount = lines[0]
-  const numbers = []
-  for (let i = 0; i < (amount * 2 - 1); i = i + 2) {
-    const single = lines[1]
-    numbers.push(Number(single[i]))
+  const amount = Number(lines[0])
+  // console.log(amount, typeof(amount))
+  const ladder = lines[1].split(' ')
+  // console.log(ladder, typeof(ladder))
+  const ladderArray = []
+  for (let i = 0; i < amount; i++) {
+    ladderArray.push(Number(ladder[i]))
   }
-  let nowNumber = numbers[0]
-  let max = 0
+  // console.log(ladderArray, typeof(ladderArray[0]))
   let counter = 0
-  for (let i = 0; i < numbers.length; i++) {
-    if (nowNumber === numbers[i]) {
+  let max = 0
+  let a = ladderArray[0]
+  // console.log(a)
+  for (let i = 0; i < ladderArray.length; i++) {
+    if (a === ladderArray[i]) {
       counter++
-    }
-    if (nowNumber !== numbers[i]) {
-      if (counter >= max) {
+    } else {
+      if (counter > max) {
         max = counter
+        a = ladderArray[i]
+        counter = 1
       }
-      counter = 0
-      nowNumber = numbers[i]
-      counter++
-    }
-    if (i === (numbers.length - 1)) {
-      if (counter >= max) {
-        max = counter
+      if (counter <= max) {
+        a = ladderArray[i]
+        counter = 1
       }
     }
+  }
+  if (counter > max) {
+    max = counter
   }
   console.log(max)
+  // console.log(max, typeof(max))
 }
