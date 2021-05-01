@@ -1,0 +1,58 @@
+https://lidemy-http-challenge.herokuapp.com/lv1?token={GOGOGO}
+// 學習用 & 來帶入其他資料
+https://lidemy-http-challenge.herokuapp.com/lv1?token={GOGOGO}&name=a_u_z
+
+https://lidemy-http-challenge.herokuapp.com/lv2?token={HellOWOrld}
+// 用 &id=56 帶入 id 然後要會用 request library 查詢書籍
+https://lidemy-http-challenge.herokuapp.com/lv2?token={HellOWOrld}&id=56
+
+https://lidemy-http-challenge.herokuapp.com/lv3?token={5566NO1}
+// 第四周內容，學習新增書籍，還要在 form 裡面帶上 ISBN 資料，記得要用,分開
+https://lidemy-http-challenge.herokuapp.com/lv3?token={5566NO1}&id=1989
+
+https://lidemy-http-challenge.herokuapp.com/lv4?token={LEarnHOWtoLeArn}
+// 學習怎麼快速的找資料，先搜出有世界書名的書，再一個一個去看，是不是春上村樹寫的
+https://lidemy-http-challenge.herokuapp.com/lv4?token={LEarnHOWtoLeArn}&id=79
+
+https://lidemy-http-challenge.herokuapp.com/lv5?token={HarukiMurakami}
+// 學習刪除一本書，記得要 console.log body 出來，才看得到訊息
+
+https://lidemy-http-challenge.herokuapp.com/lv6?token={CHICKENCUTLET}
+// 學習 base64 轉碼
+// https://www.ez2o.com/App/Coder/Base64
+// YWRtaW46YWRtaW4xMjM=
+// 但是後來我是用 'https://admin:admin123@lidemy-http-challenge.herokuapp.com/api/v2/me'
+// 的方式處理
+// https://github.com/request/request
+// 後來可以了，原來是因為在 url 下一個是 headers ，那在 url 打完後，要記得用 , 分開，不然讀到 headers 時會壞掉
+https://lidemy-http-challenge.herokuapp.com/lv6?token={CHICKENCUTLET}&email=lib@lidemy.com
+
+
+https://lidemy-http-challenge.herokuapp.com/lv7?token={SECurityIsImPORTant}
+刪除一本書
+
+https://lidemy-http-challenge.herokuapp.com/lv8?token={HsifnAerok}
+72 日日好日：茶道教我的幸福15味【電影書腰版】
+9981835427 -> 9981835423
+更新一本書的 ISBN
+在更新的 form 裡面，書名可以加可以不加，不過要記得 ,
+
+https://lidemy-http-challenge.herokuapp.com/lv9?token={NeuN}
+// 在 headers 裡面多放東西，然後要假裝是 ie6
+// https://dylan237.github.io/http-game.html
+// https://derek.coderbridge.io/2020/07/09/lidemy-HTTP-Challenge/
+https://lidemy-http-challenge.herokuapp.com/lv9?token={NeuN}&version=1A4938Jl7
+
+
+https://lidemy-http-challenge.herokuapp.com/lv10?token={duZDsG3tvoA}
+https://lidemy-http-challenge.herokuapp.com/lv10?token={duZDsG3tvoA}&num=9613
+
+https://lidemy-http-challenge.herokuapp.com/lv11?token={IhateCORS}
+// 在 headers 加入 origin Lidemy.com
+// https://gist.github.com/aszx87410/0b0d3cabf32c4e44084fadf5180d0cf4
+
+https://lidemy-http-challenge.herokuapp.com/lv12?token={r3d1r3c7}
+// 要用 chrome -> 檢查 -> network -> 點開 stopover -> header 裡面找
+
+https://lidemy-http-challenge.herokuapp.com/lv13?token={qspyz}
+
