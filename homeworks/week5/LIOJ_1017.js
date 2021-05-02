@@ -13,22 +13,11 @@ rl.on('close', () => {
 // 要考慮 預計偷很多，不過現場沒有東西或是很少東西的狀況
 // https://codepen.io/nicolas-cheng/pen/OJMWjXW
 function solve(lines) {
-  const stoleLimit = Number(lines[0]) // 可以偷的上限的量
-  const items = [] // 能偷的物品
-  for (let i = 2; i < 2 + Number(lines[1]); i++) {
-    items.push(Number(lines[i]))
+  const [stoleLimit, count, ...items] = lines.map((x) => Number(x)) // 解構好神
+  let stoledValue = 0 // 偷走的總價值
+  const itemsBigtoSmall = items.sort((a, b) => { return b - a }) // eslint-disable-line
+  for (let i = 0; i < Math.min(stoleLimit, count); i++) {
+    stoledValue += itemsBigtoSmall[i]
   }
-  const itemsSequence = items.sort( (a, b) => {return b - a }) // eslint-disable-line
-  let itemValue = 0
-  if (stoleLimit > lines[1]) { // 全都偷
-    for (let i = 0; i < itemsSequence.length; i++) {
-      itemValue += itemsSequence[i]
-    }
-    console.log(itemValue)
-  } else {
-    for (let i = 0; i < stoleLimit; i++) {
-      itemValue += itemsSequence[i]
-    }
-    console.log(itemValue)
-  }
+  console.log(stoledValue)
 }
