@@ -55,4 +55,9 @@ https://lidemy-http-challenge.herokuapp.com/lv12?token={r3d1r3c7}
 // 要用 chrome -> 檢查 -> network -> 點開 stopover -> header 裡面找
 
 https://lidemy-http-challenge.herokuapp.com/lv13?token={qspyz}
+// 實在不能透過 proxy 成功，可能要飛一趟菲律賓才行吧...
 
+https://lidemy-http-challenge.herokuapp.com/lv14?token={SEOisHard}
+// 搜尋 user agent google search
+// 用 user agent 帶上 Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+https://developers.google.com/search/blog/2019/10/updating-user-agent-of-googlebot

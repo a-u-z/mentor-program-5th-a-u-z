@@ -46,6 +46,9 @@ switch (action) {
   case 'log':
     log()
     break
+  case 'index':
+    index()
+    break
   default :
     console.log('Invalid command. Please try list, read, delete,create and update')
 }
@@ -315,9 +318,32 @@ function log() {
         /* eslint-disable */
         'Authorization': 'Basic YWRtaW46YWRtaW4xMjM=',
         'X-Library-Number': '20',
-        'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)',
+        'x-forwarded-for': '161.49.222.67:4145'
+        /* eslint-enable */
+      }
+    },
+    (error, response, body) => {
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        console.log(body)
+        const json = JSON.parse(body)
+        console.log(json)
+      }
+      if (response.statusCode >= 400 && response.statusCode < 500) {
+        console.log('查無此書或是未輸入參數')
+      }
+    }
+  )
+}
+function index() {
+  request(
+    {
+      url: `${v3Url}/index`,
+      headers: {
+        /* eslint-disable */
+        'Authorization': 'Basic YWRtaW46YWRtaW4xMjM=',
+        'X-Library-Number': '20',
+        'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
         'origin': 'lidemy.com',
-        'x-forwarded-for': 'https://ph.yahoo.com'
         /* eslint-enable */
       }
     },
