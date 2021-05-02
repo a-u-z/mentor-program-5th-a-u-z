@@ -13,8 +13,8 @@ rl.on('close', () => {
 // 要考慮 預計偷很多，不過現場沒有東西或是很少東西的狀況
 // https://codepen.io/nicolas-cheng/pen/OJMWjXW
 function solve(lines) {
-  const stoleLimit = lines[0] // 可以偷的上限的量
-  const items = [] // 物品
+  const stoleLimit = Number(lines[0]) // 可以偷的上限的量
+  const items = [] // 能偷的物品
   for (let i = 2; i < 2 + Number(lines[1]); i++) {
     items.push(Number(lines[i]))
   }
