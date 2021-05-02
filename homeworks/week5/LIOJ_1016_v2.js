@@ -11,9 +11,6 @@ rl.on('close', () => {
   solve(lines)
 })
 function solve(lines) {
-  return peace(lines)
-}
-function peace(lines) {
   const amount = lines[0]
   const teamA = []
   const teamB = []
