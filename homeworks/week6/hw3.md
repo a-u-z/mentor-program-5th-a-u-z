@@ -37,6 +37,7 @@
 	* 使用時機：把 static 改成 relative 以達到讓 absolute 追蹤的效果
 * absolute：移出資料流，以全部的網頁來說，固定在某一個地方
 	* 使用時機：購物網，在圖片上面加上是否屬於 XX 檔期的字樣、跳出廣告關閉的 XX 按鈕
+	* 往上找第一個 position 不是 static 的元素
 		* 資料來源：https://www.youtube.com/watch?v=JOdZdHnuGmM
 * fixed：移出資料流，以視窗來說，固定在一個地方
 	* 使用時機：主選單，或是最上方的功能列
