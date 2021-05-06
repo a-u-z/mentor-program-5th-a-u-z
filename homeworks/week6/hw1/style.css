@@ -15,6 +15,7 @@
     text-decoration: none;
     font-size: 18px;
     border-radius: 8px;
+    cursor: pointer;
 }
 .navbar__list__info .active, .navbar__list__info a:hover{
     background: #ff7286;
@@ -54,6 +55,28 @@
     .navbar__list__info a{
         margin: 8px;
         padding: 7px 12px;
+    }
+}
+@media(max-width: 420px){
+    .navbar__list__info a{
+        margin: 0px;
+        padding: 8px 2px;
+    }
+    .navbar__list__info{
+        margin-bottom: 10px;
+    }
+}
+@media(max-width: 281px){
+    .navbar__list__info {
+        display: flex;
+        flex-direction: column;
+    }
+    .navbar__list__info li{
+        padding: 5px 0px;
+        margin: 5px;
+    }
+    .navbar__list__info a{
+        padding: 5px 50px;
     }
 }
 /* navbar 排版 結束 */
@@ -121,6 +144,7 @@
     padding: 60px 80px;
     display: inline-block;
     border-radius: 10px;
+    cursor: pointer;
 }
 .btn__order{
     background: #a8e8e1;
@@ -239,16 +263,53 @@
     text-align: center;
 }
 @media(max-width: 1200px){
+    .comments h2{
+        margin-top: 10%;
+        margin-bottom: 8%;
+    }
     .comments__cards{
         display: flex;
         flex-direction: column;
     }
     .border{
-        margin-bottom: 50px;
+        margin-top: 15%;
+    }
+    .border div{
+        padding-top: 13%;
     }
     .border img{
-        
-        transform: translate(0%, -90%);
+        transform: translate(0%, -93%);
+    }
+}
+@media(max-width: 420px){
+    .comments h2{
+        margin-top: 30%;
+    }
+    .wrapper{
+        margin: 5px 5px;
+    }
+    .border{
+        margin-top: 30%;
+    }
+    .border div{
+        padding-top: 20%;
+    }
+    .border img{
+        transform: translate(0%, -119%);
+    }
+}
+@media(max-width: 281px){
+    .wrapper{
+        margin: 5px 5px;
+    }
+    .border div{
+        margin-top: 10%;
+    }
+    .border p{
+        padding: 10px 10px;
+    }
+    .border img{
+        transform: translate(0%, -129%);
     }
 }
 /* comments 排版 結束*/
