@@ -1,0 +1,182 @@
+*{
+    background: rgb(0, 0, 0);
+    font-family: Questrial, sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    display: flex;
+    justify-content: center;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    margin: 5% 5%;
+}
+h1{
+    color: white;
+    font-size: 90px;
+    text-align: center;
+    display: inline-block;
+    border: rgb(249, 211, 1) solid 2.5px;
+    border-radius: 30px;
+    padding: 15px 30px;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+}
+::placeholder{
+    color: white;
+    font-size: 30px;
+}
+input{
+    font-size: 30px;
+    border: white;
+    padding: 10px;
+    caret-color: white; /* 點上去後，游標的顏色 */
+    outline: white;
+    width: 470px;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+button{
+    color: white;
+    font-size: 20px;
+    margin: 5px 15px;
+    padding: 5px 5px;
+    border: rgb(255, 187, 0) 2.5px solid;
+    border-radius: 10px;
+}
+.form div{
+    margin-top: 30px;
+}
+.newtodo{
+    font-size: 30px;
+    color: white;
+}
+.newtodo span{
+    display: inline-block;
+    width: 460px;
+    word-break: break-all;
+    border: 2px solid rgb(121, 120, 120);
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+.good{
+    color: rgb(121, 120, 120);
+}
+.add{
+    cursor: pointer;
+}
+.delete{
+    cursor: pointer;
+}
+.complete{
+    cursor: pointer;
+}
+@media(max-width: 900px){
+    h1{
+        font-size: 40px;
+        border-radius: 10px;
+        padding: 7px 15px;
+    }
+    ::placeholder{
+        font-size: 20px;
+    }
+    input{
+        font-size: 20px;
+        padding: 8px;
+        border: 2px solid white;
+        border-radius: 8px;
+        width: 360px;
+    }
+    button{
+        font-size: 15px;
+        border-radius: 8px;
+    }
+    .form div{
+        margin-top: 30px;
+    }
+    .newtodo{
+        font-size: 20px;
+    }
+    .newtodo span{
+        display: inline-block;
+        word-break: break-all;
+        border-radius: 8px;
+        padding: 10px 15px;
+        width: 350px;
+    }
+}
+@media(max-width: 600px){
+    h1{
+        font-size: 20px;
+        border-radius: 5px;
+        padding: 3px 8px;
+    }
+    ::placeholder{
+        font-size: 10px;
+    }
+    input{
+        font-size: 10px;
+        padding: 4px;
+        border: 1px solid white;
+        border-radius: 4px;
+        width: 165px;
+    }
+    button{
+        font-size: 8px;
+        border-radius: 4px;
+    }
+    .form div{
+        margin-top: 15px;
+    }
+    .newtodo{
+        font-size: 10px;
+    }
+    .newtodo span{
+        display: inline-block;
+        word-break: break-all;
+        border-radius: 4px;
+        padding: 5px 8px;
+        width: 160px;
+    }
+}
+@media(max-width: 350px){
+    h1{
+        font-size: 20px;
+        border-radius: 5px;
+        padding: 3px 8px;
+    }
+    ::placeholder{
+        font-size: 6px;
+    }
+    input{
+        font-size: 8px;
+        padding: 4px;
+        border: 1px solid white;
+        border-radius: 4px;
+        width: 110px;
+    }
+    button{
+        font-size: 8px;
+        border-radius: 4px;
+    }
+    .form div{
+        margin-top: 15px;
+    }
+    .newtodo{
+        font-size: 8px;
+    }
+    .newtodo span{
+        display: inline-block;
+        word-break: break-all;
+        border-radius: 4px;
+        padding: 0px;
+        width: 100px;
+    }
+}
