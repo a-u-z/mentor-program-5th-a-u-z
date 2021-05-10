@@ -1,9 +1,5 @@
 ## 什麼是 DOM？
-為了讓 javascript 可以操控 html 。
 
-所以先將 html（document） 轉換成物件 (object)，這樣就可以用 javascript 來操控。
-
-就是瀏覽器提供的一個橋樑，用來溝通 javascript 與 html。
 
 ## 事件傳遞機制的順序是什麼；什麼是冒泡，什麼又是捕獲？
 
