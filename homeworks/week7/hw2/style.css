@@ -41,44 +41,6 @@
     display: flex;
     justify-content: space-around;
 }
-@media(max-width: 1200px){
-    .wrapper{
-        margin: 20px 18px 20px 18px;
-    }
-    .navbar{
-        display: flex;
-        flex-direction: column;
-    }
-    .navbar__name{
-        margin-bottom: 20px;
-    }
-    .navbar__list__info a{
-        margin: 8px;
-        padding: 7px 12px;
-    }
-}
-@media(max-width: 501px){
-    .navbar__list__info a{
-        margin: 0px;
-        padding: 8px 2px;
-    }
-    .navbar__list__info{
-        margin-bottom: 10px;
-    }
-}
-@media(max-width: 321px){
-    .navbar__list__info {
-        display: flex;
-        flex-direction: column;
-    }
-    .navbar__list__info li{
-        padding: 5px 0px;
-        margin: 5px;
-    }
-    .navbar__list__info a{
-        padding: 5px 50px;
-    }
-}
 /* navbar 排版 結束 */
 /* faq 外觀 開始*/
 .faq h2{
@@ -88,7 +50,7 @@
 } 
 .faq__drawer{
     border-bottom: #a6e2c0 solid 1px;
-
+    max-width: 600px;
     padding: 28px 20px;
     font-size: 18px;
 }
@@ -102,9 +64,13 @@
 .a__sentence{
     letter-spacing: 0.14px;
     line-height: 1.5em;
+    max-width: 400px;
 }
 .dis__a__sentence{
     display: none;
+}
+.q{
+    cursor: pointer;
 }
 /* faq 外觀 結束*/
 /* faq 排版 開始*/
@@ -154,11 +120,7 @@ footer{
 .footer__link__logo + div{
     line-height: 3em;
 }
-@media(max-width: 1200px){
-    .footer__info p{
-        font-size: 12px;
-    }
-}
+
 /* footer 外觀 結束*/
 /* footer 排版 開始*/
 .footer__info{
@@ -179,11 +141,7 @@ footer{
     display: flex;
     flex-direction: row-reverse;
 }
-@media(max-width: 1200px){
-    .footer__info{
-        flex-direction: column;
-    }
-}
+
 /* footer 排版 結束*/
 
 /* copyright 外觀 開始*/
@@ -207,3 +165,47 @@ footer{
     margin: 5px 5px;
 }
 /* copyright 排版 結束*/
+@media(max-width: 1200px){
+    .wrapper{
+        margin: 20px 18px 20px 18px;
+    }
+    .navbar{
+        display: flex;
+        flex-direction: column;
+    }
+    .navbar__name{
+        margin-bottom: 20px;
+    }
+    .navbar__list__info a{
+        margin: 8px;
+        padding: 7px 12px;
+    }
+    .footer__info p{
+        font-size: 12px;
+    }
+    .footer__info{
+        flex-direction: column;
+    }
+}
+@media(max-width: 501px){
+    .navbar__list__info a{
+        margin: 0px;
+        padding: 8px 2px;
+    }
+    .navbar__list__info{
+        margin-bottom: 10px;
+    }
+}
+@media(max-width: 321px){
+    .navbar__list__info {
+        display: flex;
+        flex-direction: column;
+    }
+    .navbar__list__info li{
+        padding: 5px 0px;
+        margin: 5px;
+    }
+    .navbar__list__info a{
+        padding: 5px 50px;
+    }
+}

@@ -15,7 +15,7 @@
     width: 645px;
     box-shadow: 1.8px 2.4px 5px 0px rgba(0, 0, 0, 0.3);
 }
-.input{
+.requried__input{
     width: 287px;
     height: 23px;
 }
@@ -41,10 +41,10 @@
     color: #e74149;
     font-size: 14px;
 }
-.form__input{
+.form__requried__input{
     margin-top: 56px;
 }
-.form__input__title{
+.form__requried__input__title{
     font-size: 20px;
     margin-bottom: 25px;
 }
@@ -54,7 +54,7 @@
 .activity__resource{
     margin-bottom: 48px;
 }
-.form__input__title.other{
+.form__requried__input__title.other{
     margin-top: 51px;
     margin-bottom: 12px;
 }
@@ -93,7 +93,14 @@
     color: #999999;
     text-align: center;
 }
-
+.requried__input__error{
+    color: #e74149;
+    position: absolute;
+    margin-top: 5px;
+}
+.hook__invisible .invisible{
+    display: none;
+}
 @media(max-width: 768px) {
     .wrapper{
         margin-left: 20px;
