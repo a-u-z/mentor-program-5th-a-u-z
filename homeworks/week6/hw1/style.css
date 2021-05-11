@@ -382,7 +382,7 @@ footer{
 
 /* copyright 外觀 開始*/
 .copyright{
-    background: #35564b;
+    background: red;
     height: 48px;
 }
 .copyright p{

@@ -90,6 +90,9 @@
         if (e.target.classList.contains("q__sentence")){ // 如果我點的那個東西的 class 是 q__sentence 的話
            e.target.parentNode.nextSibling.firstChild.classList.toggle("dis__a__sentence")
         } // 點的東西的父層的下一個同輩層的第一個子層的 class 如果有 dis__a__sentence 的話就變成沒有，如果沒有的話，就變成有
+        if (e.target.classList.contains("q")){ // 如果我點的那個東西的 class 是 q__sentence 的話
+           e.target.nextSibling.firstChild.classList.toggle("dis__a__sentence")
+        }
       }) // 因為子層比較特別，空格都算，所以排版要把所有空格拿掉，就變成都是同一串
   </script>
 </body>

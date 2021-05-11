@@ -12,7 +12,7 @@
         <h1>toDo List !!!</h1>
         <div class="form">
             <div>
-                <input class="typing" type="text" placeholder="Add something ٩(●˙▿˙●)۶…⋆ฺ" ><button class="add">新增</button>
+                <input class="typing" type="text" autofocus placeholder="Add something ٩(●˙▿˙●)۶…⋆ฺ" ><button class="add">新增</button>
             </div>
             <div class="newtodo">
                 <button class="complete">完成</button><span>寫每日報告</span><button class="delete">刪除</button>
@@ -23,23 +23,31 @@
         document.querySelector(".add").addEventListener('click',function (){ /*在 add 上面裝一個事件監聽器*/
             const todo = document.createElement("div") /* 宣告 todo 是一個 div 標籤*/
             todo.classList.add("newtodo") /* 把 todo 加上 newtodo 的 class，為了要有相同的 css 效果*/
-            const todo__content = document.querySelector(".typing").value /* 從 typing 裡面取出打的字*/
-            todo.innerHTML = `<button class="complete">完成</button><span>` + todo__content + `</span><button class="delete">刪除</button>` /* 設定 todo 這個 div 標籤裡面要有什麼字*/
+            const todo__content = document.querySelector(".typing").value /* 取出 typing 裡面取出打的字*/
+            todo.innerHTML = `<button class="complete">完成</button><span>` + escapeHtml(todo__content) + `</span><button class="delete">刪除</button>` /* 設定 todo 這個 div 標籤裡面要有什麼字*/
             document.querySelector(".form").appendChild(todo) /*在 .form 底下新增 todo 這個東西*/
+            document.querySelector(".typing").value = ''
+            document.querySelector(".typing").focus()
+
         })
         document.querySelector(".form").addEventListener('click',function (e){ /* 在 form 上面裝一個事件監聽器，然後取得一些資訊（e）*/
             if (e.target.classList.contains("delete")){ /*如果按下的資訊的 class 名稱有包含 delete，countains 回傳的值是 true false*/
                 document.querySelector(".form").removeChild(e.target.closest(".newtodo"))
                 /* 先選到 form 這個標籤，移除底下離剛剛按下的 delete 最近的 newtodo*/
             }
-        })
-        document.querySelector(".form").addEventListener('click',function (e){ /* 在 form 上面裝一個事件監聽器，然後取得一些資訊（e）*/
-
             if (e.target.classList.contains("complete")){ /*如果按下的資訊的 class 名稱有包含 complete，countains 回傳的值是 true false*/
                 e.target.closest(".newtodo").classList.toggle("good")
                 /* 選到 目標最近的 newtodo 這個 class，幫它再新增一個 line__through 這個 class */
             }
         })
+        function escapeHtml(unsafe) {
+            return unsafe
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+ }
     </script>
 </body>
 </html>
