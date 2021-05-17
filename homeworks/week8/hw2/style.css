@@ -1,0 +1,155 @@
+*{
+    margin: 0px;
+    padding: 0px;
+
+
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar h1{
+    display: inline-block;
+    margin-left: 20px;
+}
+.navbar div{
+    display: inline-block;
+}
+.wallpaper{
+    background: url("metal.jpg") center ;
+    background-size: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 2300px;
+}
+
+.topGame{
+    display: inline-block;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    background: white;
+    color: black;
+}
+.navbar__game span:hover{
+    background: rgb(92, 92, 92);
+    color: white;
+    transition: 0.3s;
+}
+.alive{
+    background: rgb(92, 92, 92);
+    color: white;
+}
+
+.mainWrapper{
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.mainWrapper h2{
+    color: white;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+.mainWrapper p{
+    color: white;
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+.display__name{
+    font-size: 16px;
+    color: white;
+    padding-left: 10px;
+}
+.status{
+    font-size: 20px;
+    color: white;
+    width: 220px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-left: 10px;
+}
+.box__wrapper{
+    display: flex;
+    width: 1020px;
+    flex-wrap: wrap;
+}
+
+.box{
+    width: 330px;
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    margin: 15px 4px 15px 4px;
+    transition: 0.3s;
+    
+}
+.box:hover{
+    transform: translate(7px,-7px);
+    filter: brightness(1.2);
+    transition: 0.3s;
+    box-shadow: blueviolet -7px 7px;
+}
+
+
+.detail{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    background: rgb(55, 54, 54);
+    height: 70px;
+    width: 315px;
+    padding: 10px 0px 10px 8px;
+
+}
+.word{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-around;
+    height: 70px;
+
+}
+.logo{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+
+
+}
+.preview{
+    height: 180px;
+
+}
+.preview__photo{
+    display: inline-block;
+}
+.viewers__wrapper{
+    display: flex;
+    justify-content: space-between;
+    display: inline-block;
+    text-align: center;
+}
+.viewers{
+    color: white;
+}
+.redSpot{
+    background: red;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 3px;
+}
+.display__name__wrapper{
+    display: flex;
+    justify-content: space-between;
+
+}
