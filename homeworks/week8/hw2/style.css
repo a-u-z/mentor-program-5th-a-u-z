@@ -50,14 +50,25 @@
     justify-content: center;
     align-items: center;
 }
-.mainWrapper h2{
+.game__name{
     color: white;
+    text-shadow: 
+        -2px -2px 0 #000,  
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000;
+    border: blacks;
     margin-top: 40px;
     margin-bottom: 20px;
     font-size: 30px;
 }
 .mainWrapper p{
     color: white;
+    text-shadow: 
+        -2px -2px 0 #000,  
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000;
     font-size: 30px;
     margin-bottom: 40px;
 }
@@ -148,7 +159,7 @@
     display: inline-block;
     margin-right: 3px;
 }
-.display__name__wrapper{
+.display_name__wrapper{
     display: flex;
     justify-content: space-between;
 

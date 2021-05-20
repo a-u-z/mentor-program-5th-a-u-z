@@ -1,6 +1,6 @@
 const request = require('request')
 
-const url = 'https://api.twitch.tv/kraken/streams/?game=Just Chatting&limit=20'
+const url = 'https://api.twitch.tv/kraken/streams/?game=Grand Theft Auto V&limit=2'
 request({
   url,
   headers: {
