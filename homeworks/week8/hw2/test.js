@@ -10,6 +10,6 @@ request({
 },
 (error, response, body) => {
   const games = JSON.parse(body)
-  console.log(games)
+  console.log(games.streams[0].channel)
 }
 )

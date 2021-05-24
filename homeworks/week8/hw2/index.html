@@ -21,7 +21,7 @@
     </div>
     <img src="" alt="">
     <script> // 宣告一個變數放置 stream
-        let template = `<div class="box"> 
+        let template = `<a href="$url" class="box"> 
                                 <div >
                                     <img class="preview" src="$preview" alt="">
                                 </div>
@@ -38,10 +38,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>`
+                            </a>`
         function makeTemplate(stream, template) { // 做一個可以製造 template 的 function
             let newTemplate = document.createElement("div") // 宣告一個新的 div
             newTemplate.innerHTML = template
+                .replace('$url', stream.channel.url)
                 .replace('$preview', stream.preview.medium)
                 .replace('$viewers', stream.viewers)
                 .replace('$status', stream.channel.status)
