@@ -24,12 +24,30 @@
       !empty($_GET['errCode']) ? $errCode = $_GET['errCode'] : $errCode = null;
       // 如果 get 抓的到 errCode 代表有錯誤碼，就可以讓 errCode = get 的 errCode
       // 如果抓不到，那 errCode 就是 NULL ，避免出現：Notice: Undefined index: errCode
-      if ($errCode === '1') {
+      switch ($errCode) {
+        case '1':
           echo '<div class="err">資料不齊全，請再輸入一次</div>';
-      }
-      if ($errCode === '1062') {
+          break;
+        case '1062':
           echo '<div class="err">帳號已存在，請換一個試試看</div>';
+          break;
+        case '5';
+          echo '<div class="err">兩次密碼輸入不一致，請再輸入一次</div>';
+          break;
+        case '6';
+          echo '<div class="err">密碼未輸入滿六碼，請加長長度</div>';
+          break;
+        case '7';
+          echo '<div class="err">密碼只能由英文字母或是數字組成，請重新輸入</div>';
+          break;
+        case '8';
+          echo '<div class="err">帳號只能由英文字母或是數字組成，請重新輸入</div>';
+          break;
+        case '9';
+          echo '<div class="err">帳號未輸入滿六碼，請加長長度</div>';
+          break;
       }
+     
     ?>
     <form class="board__new-comment-form" method="POST" action="handle_register.php">
       <div class="board__nickname">
@@ -38,11 +56,15 @@
       </div>
       <div class="board__nickname">
         <span>帳號：</span>
-        <input type="text" name="username" />
+        <input type="text" name="username" /><span class="hint">請輸入數字或英文字母至少六碼</span>
       </div>
       <div class="board__nickname">
         <span>密碼：</span>
-        <input type="password" name="password" />
+        <input type="password" name="password" /><span class="hint">請輸入數字或英文字母至少六碼</span>
+      </div>
+      <div class="board__nickname">
+        <span>重新輸入密碼：</span>
+        <input type="password" name="password2" />
       </div>
       <input class="board__submit-btn" type="submit" />
     </form>

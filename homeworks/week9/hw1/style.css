@@ -110,3 +110,10 @@ body {
   justify-content: right;
   
 }
+.hint{
+  font-size: 15px;
+  color: red;
+  margin-left: 10px;
+  display: inline-flex;
+
+}
