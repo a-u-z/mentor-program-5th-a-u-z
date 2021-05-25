@@ -153,6 +153,18 @@ button{
 .delete{
     cursor: pointer;
 }
+button.delete:hover{
+    border: var(--font-color) 2.5px solid;
+    color: var(--btn-border-color);
+}
+button.complete:hover{
+    border: var(--font-color) 2.5px solid;
+    color: var(--btn-border-color);
+}
+button.add:hover{
+    border: var(--font-color) 2.5px solid;
+    color: var(--btn-border-color);
+}
 .complete{
     cursor: pointer;
 }
