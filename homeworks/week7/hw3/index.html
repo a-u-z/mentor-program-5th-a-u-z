@@ -24,6 +24,7 @@
             <div class="newtodo">
                 <button class="complete">完成</button><span>寫每日報告</span><button class="delete">刪除</button>
             </div>
+            
         </form>
     </div>
     <script>
@@ -33,8 +34,9 @@
         document.querySelector(".add").addEventListener('click',function (){ /*在 add 上面裝一個事件監聽器*/
             const todo = document.createElement("div") /* 宣告 todo 是一個 div 標籤*/
             todo.classList.add("newtodo") /* 把 todo 加上 newtodo 的 class，為了要有相同的 css 效果*/
-            const todo__content = document.querySelector(".typing").value /* 取出 typing 裡面取出打的字*/
-            todo.innerHTML = `<button class="complete">完成</button><span>` + escapeHtml(todo__content) + `</span><button class="delete">刪除</button>` /* 設定 todo 這個 div 標籤裡面要有什麼字*/
+            const todo__content = document.querySelector('input[type="text"]').value /* 取出 typing 裡面取出打的字*/
+            todo.innerHTML = `<button class="complete">完成</button><span class="anchor">` + escapeHtml(todo__content) + `</span><button class="delete">刪除</button>` /* 設定 todo 這個 div 標籤裡面要有什麼字*/
+
             document.querySelector(".form").appendChild(todo) /*在 .form 底下新增 todo 這個東西*/
             document.querySelector(".typing").value = ''
             document.querySelector(".typing").focus()
@@ -62,12 +64,21 @@
         function switchTheme(e) {
             if (e.target.checked) {
                 document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark'); //add this
             }
             else {
                 document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light'); //add this
             }    
         }
+        const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
 
+            if (currentTheme === 'dark') {
+                toggleSwitch.checked = true;
+            }
+        }
         toggleSwitch.addEventListener('change', switchTheme, false);
     </script>
 </body>
