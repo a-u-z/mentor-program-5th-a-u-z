@@ -1,0 +1,131 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.body{
+
+    background-color: rgb(225, 225, 225);
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+.form{
+    background-color: white;
+    border-top: 15px solid #fad312;
+    width: 645px;
+    box-shadow: 1.8px 2.4px 5px 0px rgba(0, 0, 0, 0.3);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+
+}
+.requried__input{
+    width: 287px;
+    height: 23px;
+}
+.phone__number{
+    width: 287px;
+    height: 23px;
+}
+.wrapper{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.form__title{
+    font-size: 36px;
+    margin-top: 35px;
+    margin-bottom: 54px;
+    text-align: center;
+}
+.form__text.date{
+    margin-bottom: 11px;
+}
+.form__text.place{
+    margin-bottom: 22px;
+}
+.form__text{
+    font-size: 14px;
+}
+.form__necessary{
+    color: #e74149;
+    font-size: 14px;
+}
+.form__requried__input{
+    margin-top: 56px;
+}
+.form__requried__input__title{
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+.option1{
+    margin-bottom: 23px;
+}
+.activity__resource{
+    margin-bottom: 48px;
+}
+.form__requried__input__title.other{
+    margin-top: 51px;
+    margin-bottom: 12px;
+}
+.suggestion{
+    margin-top: 24px;
+    margin-bottom: 55px;
+    width: 287px;
+    height: 23px;
+}
+.submit-btn{
+    padding: 13px 32px;
+    background-color: #fad312;
+    display: inline-block;
+    border-radius: 3px;
+    font-size: 15px;
+    border: none;
+}
+.necessary{
+    color: #e74149;
+    margin-top: 8px;
+}
+.form__text.warning{
+    margin-top: 21px;
+    margin-bottom: 45px;
+}
+.footer{
+    width: 100%;
+    height: 60px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.footer p{
+    color: #999999;
+    text-align: center;
+}
+.requried__input__error{
+    color: #e74149;
+    position: absolute;
+    margin-top: 5px;
+}
+.hook__invisible .invisible{
+    display: none;
+}
+@media(max-width: 768px) {
+    .wrapper{
+        margin-left: 20px;
+    }
+}
+@media(max-width: 330px) {
+    .requried__input{
+        width: 150px;
+        height: 23px;
+    }
+    .phone__number{
+        width: 150px;
+        height: 23px;
+    }
+    .suggestion{
+        width: 150px;
+        height: 23px;
+    }
+}

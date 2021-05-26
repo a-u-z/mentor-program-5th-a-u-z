@@ -1,0 +1,283 @@
+*{
+    background: var(--background-color);
+    font-family: Questrial, sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+:root {
+    --background-color: #ffa600;
+    --main-border-color: white;
+    --font-color: black;
+    --btn-border-color: white;
+    --todo-done-color: rgb(121, 120, 120);
+}
+[data-theme="dark"] {
+    --background-color: black;
+    --main-border-color: rgb(249, 211, 1);
+    --font-color: white;
+    --btn-border-color: rgb(255, 187, 0);
+    --todo-done-color: rgb(121, 120, 120);
+}
+.theme-switch-wrapper {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    display: flex;
+    align-items: center;
+  }
+span{
+margin-right: 10px;
+font-size: 1rem;
+color: var(--font-color);
+}
+.theme-switch {
+display: inline-block;
+height: 34px;
+position: relative;
+width: 60px;
+}
+
+.theme-switch input {
+display:none;
+}
+
+.slider {
+background-color: #ccc;
+bottom: 0;
+cursor: pointer;
+left: 0;
+position: absolute;
+right: 0;
+top: 0;
+transition: .2s;
+}
+
+.slider:before {
+background-color: #fff;
+bottom: 4px;
+content: "";
+height: 26px;
+left: 4px;
+position: absolute;
+transition: .2s;
+width: 26px;
+}
+  
+input:checked + .slider {
+    background-color: rgb(255, 187, 0);
+}
+        
+input:checked + .slider:before {
+transform: translateX(26px);
+}
+
+.slider.round {
+border-radius: 34px;
+}
+
+.slider.round:before {
+border-radius: 50%;
+}         
+
+body{
+    display: flex;
+    justify-content: center;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    margin: 5% 5%;
+}
+h1{
+    color: var(--font-color);
+    font-size: 90px;
+    text-align: center;
+    display: inline-block;
+    border: var(--main-border-color) solid 2.5px;
+    border-radius: 30px;
+    padding: 15px 30px;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+}
+::placeholder{
+    color: var(--font-color);
+    font-size: 30px;
+}
+.typing{
+    margin-right: 10px;
+}
+input{
+    font-size: 30px;
+
+    padding: 10px;
+    caret-color: var(--font-color); /* 點上去後，游標的顏色 */
+    outline: var(--font-color);
+    width: 470px;
+    color: var(--font-color);
+    border: 2px solid var(--main-border-color);
+    border-radius: 10px;
+}
+button{
+    color: var(--font-color);
+    font-size: 20px;
+    margin: 5px 15px;
+    padding: 5px 5px;
+    border: var(--btn-border-color) 2.5px solid;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+.form div{
+    margin-top: 30px;
+}
+.newtodo{
+    font-size: 30px;
+    color: var(--font-color);
+}
+.newtodo span{
+    display: inline-block;
+    width: 460px;
+    word-break: break-all;
+    border: 2px solid var(--main-border-color);
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+.good{
+    color: var(--todo-done-color);
+}
+.add{
+    cursor: pointer;
+}
+.delete{
+    cursor: pointer;
+}
+button.delete:hover{
+    border: var(--font-color) 2.5px solid;
+    color: var(--btn-border-color);
+    transition: 0.2s;
+}
+button.complete:hover{
+    border: var(--font-color) 2.5px solid;
+    color: var(--btn-border-color);
+    transition: 0.2s;
+}
+button.add:hover{
+    border: var(--font-color) 2.5px solid;
+    color: var(--btn-border-color);
+    transition: 0.2s;
+}
+.complete{
+    cursor: pointer;
+}
+@media(max-width: 900px){
+    .wrapper{
+        margin-top: 50px;
+    }
+    h1{
+        font-size: 40px;
+        border-radius: 10px;
+        padding: 7px 15px;
+    }
+    ::placeholder{
+        font-size: 20px;
+    }
+    input{
+        font-size: 20px;
+        padding: 8px;
+        border: 2px solid var(--font-color);
+        border-radius: 8px;
+        width: 360px;
+    }
+    button{
+        font-size: 15px;
+        border-radius: 8px;
+    }
+    .form div{
+        margin-top: 30px;
+    }
+    .newtodo{
+        font-size: 20px;
+    }
+    .newtodo span{
+        display: inline-block;
+        word-break: break-all;
+        border-radius: 8px;
+        padding: 10px 15px;
+        width: 350px;
+    }
+}
+@media(max-width: 600px){
+    h1{
+        font-size: 20px;
+        border-radius: 5px;
+        padding: 3px 8px;
+    }
+    ::placeholder{
+        font-size: 10px;
+
+        white-space: pre-line;
+    }
+    input{
+        font-size: 10px;
+        padding: 4px;
+        border: 1px solid var(--font-color);
+        border-radius: 4px;
+        width: 165px;
+    }
+    button{
+        font-size: 8px;
+        border-radius: 4px;
+    }
+    .form div{
+        margin-top: 15px;
+    }
+    .newtodo{
+        font-size: 10px;
+    }
+    .newtodo span{
+        display: inline-block;
+        word-break: break-all;
+        border-radius: 4px;
+        padding: 5px 8px;
+        width: 160px;
+    }
+}
+@media(max-width: 350px){
+
+    h1{
+        font-size: 20px;
+        border-radius: 5px;
+        padding: 3px 8px;
+
+    }
+    ::placeholder{
+        font-size: 6px;
+    }
+    input{
+        font-size: 8px;
+        padding: 4px;
+        border: 1px solid var(--font-color);
+        border-radius: 4px;
+        width: 110px;
+    }
+    button{
+        font-size: 8px;
+        border-radius: 4px;
+    }
+    .form div{
+        margin-top: 15px;
+    }
+    .newtodo{
+        font-size: 8px;
+    }
+    .newtodo span{
+        display: inline-block;
+        word-break: break-all;
+        border-radius: 4px;
+        padding: 0px;
+        width: 100px;
+    }
+}

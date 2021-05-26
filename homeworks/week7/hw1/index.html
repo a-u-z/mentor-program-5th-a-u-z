@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新拖延運動報名表單</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="body">
+        <form action="" class="form">
+            <div class="wrapper">
+                <div class="form__title">新拖延運動報名表單</div>
+                <div class="form__text date">活動日期：2020/12/10 ~ 2020/12/11</div>
+                <div class="form__text place">活動地點：台北市大安區新生南路二段1號</div>
+                <div class="form__necessary">*必填</div>
+                <div class="form__requried__input hook__invisible">
+                    <div class="form__requried__input__title nickname">暱稱 <span class="form__necessary">*</span></div>
+                    <input class="requried__input" type="text" size="35" placeholder="您的回答">
+                    <div class="requried__input__error invisible" >此欄未填寫</div>
+                </div>
+                <div class="form__requried__input hook__invisible">
+                    <div class="form__requried__input__title">電子郵件 <span class="form__necessary">*</span></div>
+                    <input class="requried__input" type="email" placeholder="您的電子郵件">
+                    <div class="requried__input__error invisible" >此欄未填寫</div>
+                </div>
+                <div class="form__requried__input hook__invisible">
+                    <div class="form__requried__input__title">手機號碼 <span class="form__necessary">*</span></div>
+                    <input class="phone__number" type="text" placeholder="您的手機號碼">
+                    <div class="requried__input__error invisible" >此欄未填寫或未正確填寫</div>
+                </div>
+                <div class="form__requried__input hook__invisible">
+                    <div class="form__requried__input__title">報名類型 <span class="form__necessary">*</span></div>
+                    <div class="option1"><input class="type" type="radio" name="type" id="bed" value="躺在床上用想像力實作"><label for="bed">躺在床上用想像力實作</label></div>
+                    <div><input class="type" type="radio" name="type" id="ground" value="趴在地上滑手機找現成的"><label for="ground">趴在地上滑手機找現成的</label></div>
+                    <div class="requried__input__error invisible" >此欄未填寫</div>
+                </div>
+                <div class="form__requried__input hook__invisible">
+                    <div class="form__requried__input__title">怎麼知道這個活動的？ <span class="form__necessary">*</span></div>
+                    <input class="requried__input" type="text" class="activity__resource" placeholder="您的回答">
+                    <div class="requried__input__error invisible">此欄未填寫</div>
+                </div>
+                <div class="form__requried__input__title other">其他</div>
+                <div class="form__text ">對活動的一些建議</div>
+                <div ><input type="text" class="suggestion" placeholder="您的回答"></div>
+                <input type="submit" class="submit-btn">
+                <div class="form__text warning">請勿透過表單送出您的密碼。</div>
+                <div></div>
+            </div>
+        </form>
+    </div>
+    <footer class="footer">
+       <p>© 2020 © Copyright. All rights Reserved.</p>
+    </footer>
+    <script>
+        document.querySelector("form").addEventListener('submit',function (e){  // 加上監聽器
+            const requried__inputs = document.querySelectorAll(".requried__input") // 把 requried__input 輸入的資料都拿出來
+            const type = document.querySelectorAll(".type") // 把 radio 的資料拿出來
+            for ( let requried__input of requried__inputs) {  // 把 required__inputs 的每一個東西都依次叫做 required__input
+                if (!requried__input.value){ // 如果 required__input 沒有值的話
+                    e.preventDefault()
+                    requried__input.parentNode.classList.remove('hook__invisible') // 把這個鉤子拿掉，那就會顯示出紅字
+                } else { // 如果有的話，就可以再把鉤子加回去
+                    requried__input.parentNode.classList.add('hook__invisible')
+                }
+            }
+            const phoneNumberRegexRule = /^09\d{8}$/
+            let phoneNumber = document.querySelector(".phone__number").value
+            const phoneNumberNode = document.querySelector(".phone__number")
+            function isPhoneNumberValid(phoneNumber) {
+                return phoneNumberRegexRule.test(phoneNumber)
+            }
+            if (!isPhoneNumberValid(phoneNumber)) {
+                e.preventDefault()
+                phoneNumberNode.parentNode.classList.remove('hook__invisible')
+            } else {
+                phoneNumberNode.parentNode.classList.add('hook__invisible')
+            }
+
+            if (type[0].checked === type[1].checked) { // 如果 .checked 都相同，代表都沒有勾
+                e.preventDefault()
+                document.querySelector(".option1").parentNode.classList.remove('hook__invisible') // 將鉤子拿掉，顯示出紅字
+            }else if (type[0].checked){ // 如果第一個有勾
+                document.querySelector(".option1").parentNode.classList.add('hook__invisible')
+                type__content = document.getElementById("bed").value // 內容就叫做 id 為 bed 的 value
+
+            }else if (type[1].checked){
+                document.querySelector(".option1").parentNode.classList.add('hook__invisible')
+                type__content = document.getElementById("ground").value
+            }
+            let validCode = document.querySelectorAll(".hook__invisible") // 搜出所有的勾勾
+            if (validCode.length === 5 ){ // 代表 5 題都有回答
+                const message = // 最後要輸出的完整版長這樣
+`暱稱：${requried__inputs[0].value}
+電子郵件：${requried__inputs[1].value}
+手機號碼：${phoneNumber}
+報名類型：${type__content}
+怎麼知道這個活動的：${requried__inputs[2].value}
+${document.querySelector(".suggestion").value ? `對活動的一些建議: ${document.querySelector(".suggestion").value}` : `對活動的一些建議：無`}` // 有就印，沒有就不印
+            alert(message) // 跳出完整版的提醒
+            }
+        })
+    </script>
+</body>
+</html>

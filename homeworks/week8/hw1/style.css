@@ -1,0 +1,349 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Questrial, sans-serif;
+    /* outline: solid gold 1.5px; */
+}
+/* navbar 外觀 開始*/
+.navbar__name > span{
+    color: #489846;
+    font-size: 36px;
+}
+.navbar__list__info a{ /*相同的一起設定*/
+    margin-left: 30px;
+    padding: 14px 25px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.navbar__list__info .active, .navbar__list__info a:hover{
+    background: #ff7286;
+    color: white;
+    transition: background 0.18s ease-in, color 0.18s ease-in;
+}
+.navbar__list__info .normal{
+    background: white;
+    color: #010101;
+}
+/* navbar 外觀 結束*/
+/* navbar 排版 開始*/
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.wrapper{
+    margin: 0px 96px 32px 96px;
+}
+.navbar__list__info{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+/* navbar 排版 結束 */
+.photo{
+    background: url(games-bn.png) center/cover no-repeat;
+    height: 770px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.FIRST{
+    background: url(bg.png) center/cover no-repeat;
+    height: 770px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.SECOND{
+    background: url(living-room-1872192_1920.jpg) center/cover no-repeat;
+    height: 770px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.THIRD{
+    background: url(youtube-2617510_1920.jpg) center/cover no-repeat;
+    height: 770px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.NONE{
+    background: black;
+    height: 770px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.draw__box{
+    background: white;
+    border-radius: 16px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.draw__box0{
+    background: transparent;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.prize__word__spec{
+    font-size: 36px;
+    color: black;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 2em;
+}
+.prize__word{
+    font-size: 36px;
+    color: white;
+    text-align: center;
+    line-height: 2em;
+    margin: 50px 30px;
+    text-shadow: 
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000;
+}
+
+.draw__box div{
+    margin: 15px 0px;
+}
+.title{
+    color: #5ec1b6;
+    font-size: 24px;
+    margin-top: 20px;
+}
+.draw__box__detail h2{
+    font-size: 18px;
+    font-weight: border;
+    color: #322929;
+    line-height: 1.8em;
+    display: inline-block;
+}
+.draw__box__detail p{
+    color: #322929;
+    line-height: 2em;
+    display: inline-block;
+    width: 320px;
+}
+.btn{
+    padding: 18px 160px;
+    background: #e62a45;
+    border-radius: 8px;
+    color: white;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+.btnAgain{
+    padding: 18px 160px;
+    background: #e62a45;
+    border-radius: 8px;
+    color: white;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.draw__box__detail{
+    margin: 10px 20px;
+    display: flex;
+    justify-content: left;
+    border-bottom: #cdcdcd solid 2px;
+    padding: 6px 0px;
+}
+.draw__box__detail__wrapper{
+    display: flex;
+    flex-direction: column;
+}
+.reward span{
+    display: inline-block;
+}
+.reward{
+    display: flex;
+    flex-direction: column;
+}
+
+footer{
+    background: #e8efee;
+}
+.footer__info p{
+    color: #484848;
+    line-height: 2em;
+}
+.footer__link__logo{
+    color: #489846;
+    font-size: 36px;
+}
+.footer__link__logo + div{
+    line-height: 3em;
+}
+.footer__info{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 35px;
+}
+.footer__link{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start
+}
+.footer__link__logo{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.footer__link__logo + div{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.copyright{
+    background: #35564b;
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.copyright p{
+    color: white;
+    text-align: center;
+    margin: 5px 5px;
+
+}
+/* copyright 排版 結束*/
+@media(max-width: 1200px){
+    .wrapper{
+        margin: 0px 18px 20px 18px;
+    }
+    .navbar{
+        display: flex;
+        flex-direction: column;
+    }
+    .navbar__name{
+        margin-bottom: 20px;
+    }
+    .navbar__list__info a{
+        margin: 8px;
+        padding: 7px 12px;
+    }
+    .footer__info p{
+        font-size: 12px;
+    }
+    .footer__info{
+        flex-direction: column;
+    }
+}
+@media(max-width: 501px){
+    .navbar__list__info a{
+        margin: 0px;
+        padding: 8px 2px;
+    }
+    .navbar__list__info{
+        margin-bottom: 10px;
+    }
+    .photo{
+        background: ;
+        height: 770px;
+        position: relative;
+
+
+    }
+    .draw__box{
+        background: white;
+        border-radius: 0px;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .draw__box__detail{
+        margin: 10px 20px;
+        display: flex;
+        flex-direction: column;
+        border-bottom: #cdcdcd solid 2px;
+        padding: 6px 0px;
+    }
+    .title{
+        padding: 0px 40px;
+        text-align: center;
+    }
+    .title1{
+
+    }
+    .btn{
+        padding: 18px 80px;
+        margin-bottom: 40px;
+    }
+}
+@media(max-width: 321px){
+    .navbar__list__info {
+        display: flex;
+        flex-direction: column;
+    }
+    .navbar__list__info li{
+        padding: 5px 0px;
+        margin: 5px;
+    }
+    .navbar__list__info a{
+        padding: 5px 50px;
+    }
+    .draw__box__detail{
+        margin: 10px 20px;
+        display: flex;
+        flex-direction: column;
+        border-bottom: #cdcdcd solid 2px;
+        padding: 6px 0px;
+    }
+    .draw__box__detail__wrapper{
+        margin: 10px 200px;
+        
+    }
+    .title{
+        padding: 0px 40px;
+        text-align: center;
+    }
+    .btn{
+        padding: 0px 80px;
+        margin-bottom: 20px;
+    }
+    .draw__box__detail p{
+        color: #322929;
+        line-height: 2em;
+        display: inline-block;
+        width: 220px;
+    }
+    .photo{
+        margin-bottom: 20px;
+    }
+    .draw__box{
+        background: white;
+        border-radius: 0px;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .copyright{
+        height: 80px;
+    }
+    .btn{
+        padding: 18px 50px;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+}

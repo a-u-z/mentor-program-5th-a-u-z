@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitch Top Games and Streams</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+        <h1>Twitch Top Games</h1>
+        <div class="navbar__game"><!-- 等等在這裡插入 span  --></div>
+    </div>
+    <div class="wallpaper">
+        <div class="mainWrapper">
+            <h2 class="game__name"></h2>
+            <p>Top 20 popular live streams sorted by current viewers</p>
+            <div class="box__wrapper"><!-- 等等在這裡插入 div  --></div>
+        </div>
+    </div>
+    <img src="" alt="">
+    <script> // 宣告一個變數放置 stream
+        let template = `<a href="$url" class="box"> 
+                                <div >
+                                    <img class="preview" src="$preview" alt="">
+                                </div>
+                                <div class="detail">
+                                    <img class="logo" src="$logo" alt="">
+                                    <div class="word">
+                                        <span class="status">$status</span>
+                                        <div class="display_name__wrapper">
+                                            <span class="display__name">$display_name</span>
+                                            <div class="viewers__wrapper">
+                                                <span class="redSpot" > </span>
+                                                <span class="viewers">$viewers</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>`
+        function makeTemplate(stream, template) { // 做一個可以製造 template 的 function
+            let newTemplate = document.createElement("div") // 宣告一個新的 div
+            newTemplate.innerHTML = template
+                .replace('$url', stream.channel.url)
+                .replace('$preview', stream.preview.medium)
+                .replace('$viewers', stream.viewers)
+                .replace('$status', stream.channel.status)
+                .replace('$logo', stream.channel.logo)
+                .replace('$display_name', stream.channel.display_name) // 把模版塞入這個新的模版
+            return newTemplate
+        }
+        function sendRequest(request__name,url) {
+            request__name.open('GET',url)
+            request__name.setRequestHeader('Client-ID', 'ny29dihtbce4ubq6bvgupsrojiv8uf') // 設定 header，twitch 需要的
+            request__name.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json') // 設定 header，twitch 需要的
+            request__name.send() // 發送出 request
+        }
+        function boxRequestOnload(boxRequest) {
+            boxRequest.onload = function () { // 如果收到 respose 後，執行的 function)
+                if (boxRequest.status >= 200 && navbarRequest.status < 300) {
+                    let json = JSON.parse(boxRequest.response)
+                    try {
+                        json = JSON.parse(boxRequest.response)
+                    } catch (e) {
+                        console.log(e)
+                    }
+                    const boxRequestResponse = JSON.parse(boxRequest.response)
+                    const streams = boxRequestResponse.streams
+                    streams.forEach(stream => document.querySelector(".box__wrapper").appendChild(makeTemplate(stream,template)))
+                }
+                if (boxRequest.status >= 400 && boxRequest.status < 500) {
+                    console.log('狀態碼錯誤')
+                }
+            }
+        }
+        const navbarRequest = new XMLHttpRequest() // new 一個 AJAX 的 function
+        const top5Url = 'https://api.twitch.tv/kraken/games/top?limit=5'
+        sendRequest(navbarRequest, top5Url)
+        navbarRequest.onload = function () {  // 當收到 response 之後啟動 function
+            if (navbarRequest.status >= 200 && navbarRequest.status < 300){
+                let json = JSON.parse(navbarRequest.response)
+                try {
+                    json = JSON.parse(navbarRequest.response)
+                } catch (e) {
+                    console.log(e)
+                }
+                const navbarRequestResponse = JSON.parse(navbarRequest.response) // 轉換成 JSON 格式
+                const top1 = navbarRequestResponse.top[0].game.name
+                for (let i = 0; i < 5; i++){ // 用迴圈新增前五名
+                    const topGame = document.createElement("span") // 讓 document 新增一個元素標籤 span 
+                    topGame.classList.add("topGame")
+                    topGame.innerHTML = navbarRequestResponse.top[i].game.name // 把這個元素標籤的內部文字設定出來
+                    document.querySelector(".navbar__game").appendChild(topGame) // 去搜尋 navbar__game 底下新增上面這個元素標籤
+                }
+                document.querySelector(".game__name").innerHTML = navbarRequestResponse.top[0].game.name // 預設顯示第一名
+                const boxRequest = new XMLHttpRequest() 
+                const top1Url = `https://api.twitch.tv/kraken/streams/?game=${top1}&limit=20`
+                sendRequest(boxRequest, top1Url)
+                boxRequestOnload(boxRequest) 
+            }
+            if (navbarRequest.status >= 400 && navbarRequest.status < 500) {
+                console.log('狀態碼錯誤')
+            }
+        }
+        document.querySelector(".navbar__game").addEventListener('click',function (e) {
+            const nowSearch = e.target.closest("span").innerHTML // 設定現在點到的是哪個遊戲，取出名字
+            if (e.target.classList.contains("topGame") ) {
+                const isAlive = document.querySelector(".alive")  // 搜尋之前是否有加上 alive 過
+                isAlive?isAlive.classList.remove("alive"):'' // 如果有，移除它，沒有的話，不做事情
+                document.querySelector(".game__name").innerHTML = nowSearch // 把 現在遊戲的名字改成 現在搜出來的
+                document.querySelector(".box__wrapper").innerHTML = '' // 把 box 都清掉
+            }
+            const boxRequest = new XMLHttpRequest() // 再 new 一次 AJAX
+            const singleUrl = `https://api.twitch.tv/kraken/streams/?game=${nowSearch}&limit=20` // 這次的網址，要搜的是現在的遊戲
+            sendRequest(boxRequest, singleUrl)
+            boxRequestOnload(boxRequest)
+            e.target.classList.toggle("alive") // 放離上面的 alive 太近會一起被清掉，不知道為什麼，所以放離上面遠一點點，就不會有這個問題
+        })
+    </script>
+</body>
+</html>
