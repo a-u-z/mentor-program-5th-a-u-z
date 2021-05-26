@@ -121,6 +121,17 @@
             boxRequestOnload(boxRequest)
             e.target.classList.toggle("alive") // 放離上面的 alive 太近會一起被清掉，不知道為什麼，所以放離上面遠一點點，就不會有這個問題
         })
+        var body = document.body,
+            html = document.documentElement;
+
+        var height = Math.max( body.scrollHeight, body.offsetHeight, 
+                       html.clientHeight, html.scrollHeight, html.offsetHeight );
+        
+        window.scrollTo(console.log(window.scrollY)) 
+            
+        
+        console.log(window.height)
+        console.log(height)
     </script>
 </body>
 </html>
