@@ -7,7 +7,7 @@
     $connect->query("SET NAMES UTF8");
     $connect->query('SET time_zone="+8:00"');
     session_start();
-    function getNicknameFromUsername($username) {
+    function get_user_info_from_username($username) {
         global $connect;
         $sql = "select * from a_u_z_users where username = '%s'";
         $selectUser = sprintf($sql, $username);

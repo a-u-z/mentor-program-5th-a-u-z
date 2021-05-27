@@ -16,7 +16,7 @@
 
 ## Cookie 是什麼？在 HTTP 這一層要怎麼設定 Cookie，瀏覽器又是怎麼把 Cookie 帶去 Server 的？
 
-1. Cookie 是實現 Session 的一種工具（為了解決 http 無狀態的問題）。是一個小型的純文字檔，讓我們在發送 request 的時候，夾帶 cookie 讓 Serve 知道使用者的基本資訊，來達成 Session 機制。
+1. Cookie 是實現 Session 的一種工具（為了解決 http 無狀態的問題）。是一個小型的純文字檔，讓我們在發送 request 的時候，夾帶 cookie 讓 Serve 知道使用者在經由 `Set-cookie`所預存的資訊，來達成 Session 機制。
 2. Server 可以在 Response Header 設定 `Set-cookie`
 3. 瀏覽器在 Request Header 帶上 cookie 給 Server 
 

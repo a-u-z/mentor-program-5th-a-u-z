@@ -1,9 +1,9 @@
 <?php
     require_once 'utility.php';
     $content = $_POST['content'];
-    $nickname = getNicknameFromUsername($_SESSION['username']);
+    $username_info = get_user_info_from_username($_SESSION['username']);
     // 透過寫在 utility.php 裡面的函式，用 username 關連出 nickname
-    $nickname = $nickname['nickname'];
+    $nickname = $username_info['nickname'];
     // 因為 nickname 會是一個 array 所以要在從中取值
     if (empty($content)) {
         header('Location:index.php?errCode=3');

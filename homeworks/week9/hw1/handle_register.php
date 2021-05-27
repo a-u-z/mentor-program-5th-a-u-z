@@ -44,7 +44,7 @@
         die();
     }
     function isNumAndAlphabet($str) { // 判斷是否由英文及數字組成
-        if (preg_match('/^[a-zA-Z0-9_]+$/', $str)) {
+        if (preg_match('/^\w+$/', $str)) { // [A-Za-z0-9_] 的部分，可以縮寫為 \w
             return true;
         }   
     }

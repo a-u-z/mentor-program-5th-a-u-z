@@ -13,7 +13,6 @@
     if ($isValid) { // 有結果就導回 index.php
         $_SESSION['username'] = $username;
         header('Location:index.php');
-        die();
     } else {
         header('Location:login.php?errCode=2'); // 沒結果就是帳號或是密碼錯誤
     }
