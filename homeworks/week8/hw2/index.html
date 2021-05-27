@@ -13,32 +13,34 @@
         <div class="navbar__game"><!-- 等等在這裡插入 span  --></div>
     </div>
     <div class="wallpaper">
+
         <div class="mainWrapper">
             <h2 class="game__name"></h2>
             <p>Top 20 popular live streams sorted by current viewers</p>
             <div class="box__wrapper"><!-- 等等在這裡插入 div  --></div>
         </div>
     </div>
-    <img src="" alt="">
     <script> // 宣告一個變數放置 stream
         let template = `<a href="$url" class="box"> 
-                                <div >
-                                    <img class="preview" src="$preview" alt="">
-                                </div>
-                                <div class="detail">
-                                    <img class="logo" src="$logo" alt="">
-                                    <div class="word">
-                                        <span class="status">$status</span>
-                                        <div class="display_name__wrapper">
-                                            <span class="display__name">$display_name</span>
-                                            <div class="viewers__wrapper">
-                                                <span class="redSpot" > </span>
-                                                <span class="viewers">$viewers</span>
-                                            </div>
+                            <div class="preview__placeholder">
+                                <img class="preview" src="$preview" alt="" onload="this.style.opacity=1">
+                            </div>
+                            <div class="detail">
+                                <img class="logo" src="$logo" alt="">
+                                <div class="word">
+                                    <span class="status">$status</span>
+                                    <div class="display_name__wrapper">
+                                        <span class="display__name">$display_name</span>
+                                        <div class="viewers__wrapper">
+                                            <span class="redSpot" > </span>
+                                            <span class="viewers">$viewers</span>
                                         </div>
                                     </div>
                                 </div>
-                            </a>`
+                            </div>
+                        </a>`
+                        
+                        
         function makeTemplate(stream, template) { // 做一個可以製造 template 的 function
             let newTemplate = document.createElement("div") // 宣告一個新的 div
             newTemplate.innerHTML = template
@@ -76,7 +78,7 @@
         }
         const navbarRequest = new XMLHttpRequest() // new 一個 AJAX 的 function
         const top5Url = 'https://api.twitch.tv/kraken/games/top?limit=5'
-        sendRequest(navbarRequest, top5Url)
+        sendRequest(navbarRequest, top5Url) // 取得前五名的遊戲
         navbarRequest.onload = function () {  // 當收到 response 之後啟動 function
             if (navbarRequest.status >= 200 && navbarRequest.status < 300){
                 let json = JSON.parse(navbarRequest.response)
@@ -103,7 +105,7 @@
                 console.log('狀態碼錯誤')
             }
         }
-        document.querySelector(".navbar__game").addEventListener('click',function (e) {
+        document.querySelector(".navbar__game").addEventListener('click',function (e) { // 搜尋新的遊戲
             const nowSearch = e.target.closest("span").innerHTML // 設定現在點到的是哪個遊戲，取出名字
             if (e.target.classList.contains("topGame") ) {
                 const isAlive = document.querySelector(".alive")  // 搜尋之前是否有加上 alive 過

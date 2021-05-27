@@ -14,13 +14,22 @@
     border-top: 15px solid #fad312;
     width: 645px;
     box-shadow: 1.8px 2.4px 5px 0px rgba(0, 0, 0, 0.3);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+
 }
 .requried__input{
     width: 287px;
     height: 23px;
 }
+.phone__number{
+    width: 287px;
+    height: 23px;
+}
 .wrapper{
-    margin-left: 42px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .form__title{
     font-size: 36px;
@@ -104,5 +113,19 @@
 @media(max-width: 768px) {
     .wrapper{
         margin-left: 20px;
+    }
+}
+@media(max-width: 330px) {
+    .requried__input{
+        width: 150px;
+        height: 23px;
+    }
+    .phone__number{
+        width: 150px;
+        height: 23px;
+    }
+    .suggestion{
+        width: 150px;
+        height: 23px;
     }
 }
