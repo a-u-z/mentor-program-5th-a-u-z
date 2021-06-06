@@ -1,8 +1,8 @@
 <?php
     require_once('utility.php');
-    $id = $_GET['id'];
+    $id = htmlspecialchars($_GET['id']);
 
-    $username = $_SESSION['username'];
+    $username = htmlspecialchars($_SESSION['username']);
     $sql = "update a_u_z_comments set is_deleted = 1 where id = ? and username = ?";
     $delete_content = $connect -> prepare($sql);
     $delete_content -> bind_param('is', $id, $username);

@@ -16,7 +16,7 @@
       <a class="btn" href="index.php">回留言板</a>
       <a class="btn" href="register.php">註冊</a>
     </div>
-    <h1 class="board__title">登入</h1>
+    <h1 class="board__title">後台登入</h1>
     <?php
       require_once 'utility.php';
       !empty($_GET['errCode']) ? $errCode = $_GET['errCode'] : $errCode = null;
@@ -28,14 +28,11 @@
       if ($errCode === '2') {
           echo '<div class="err">帳號或是密碼錯誤，請再輸入一次</div>';
       }
-      if ($errCode === '4') {
-          echo '<div class="err">帳號已註冊成功，請登入</div>';
-      }
     ?>
-    <form class="board__new-comment-form" method="POST" action="handle_login.php">
+    <form class="board__new-comment-form" method="POST" action="handle_backend_login.php">
       <div class="board__nickname">
         <span>帳號：</span>
-        <input type="text" name="username" autofocus />
+        <input type="text" name="username" />
       </div>
       <div class="board__nickname">
         <span>密碼：</span>
@@ -46,4 +43,3 @@
   </main>
 </body>
 
-</html>

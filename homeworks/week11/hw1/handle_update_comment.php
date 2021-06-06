@@ -5,9 +5,9 @@
         header('Location:update_comment.php?errCode=3');
         die();
     }
-    $id = $_POST['id'];
-    $content = $_POST['content'];
-    $username = $_SESSION['username'];
+    $id = htmlspecialchars($_POST['id']);
+    $content = htmlspecialchars($_POST['content']);
+    $username = htmlspecialchars($_SESSION['username']);
     $sql = "update a_u_z_comments set content = ? where id = ? and username = ?";
     $update_content = $connect -> prepare($sql);
     $update_content -> bind_param('sis',$content, $id, $username);

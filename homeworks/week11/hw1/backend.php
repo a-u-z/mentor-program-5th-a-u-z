@@ -12,7 +12,7 @@
   }
   $limit = 5;
   $offset = ($page - 1) * $limit;
-  $website = 'index';
+  $website = 'backend';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,13 +33,8 @@
         <!-- 如果有 username（有登入），給他登出按鈕和歡迎詞 -->
         <a class="btn" href="handle_logout.php">登出</a>
         <span class="update_nickname_button">更改暱稱</span>
-        <h3>歡迎您回來！！<?php echo prevent_XSS($username) ?> 大人</h3>
-        <?php } else {?>
-        <!-- 沒有的話給他註冊、登入二選一 -->
-        <a class="btn" href="register.php">註冊</a>
-        <a class="btn" href="login.php">登入</a>
-        <a class="btn" href="backend_login.php">後台</a>
-      <?php }?>
+        <h3>歡迎您回來！！<?php echo prevent_XSS($username) ?> 管理者大人</h3>
+        <?php } ?>
       <div class="anchor hide">
           <form action="handle_update_nickname.php" method="POST">
             更改暱稱：<input type="text" name="nickname"> <input class="btn" type="submit">
@@ -54,41 +49,17 @@
         case 4:
           echo '<div class="err">註冊成功，已完成登入</div>';
           break;
-        case 9:
-          echo '<div class="err">未輸入暱稱，請重新輸入</div>';
-          break;
-        case 10:
-          echo '<div class="err">恭喜！暱稱更改成功</div>';
-          break;
-        case 11:
-          echo '<div class="err">恭喜！評論更改成功</div>';
-          break;
-        case 12:
-          echo '<div class="err">恭喜！評論刪除成功</div>';
-          break;
-        case 13:
-          echo '<div class="err">恭喜！評論新增成功</div>';
-          break;
-        case 14:
-          echo '<div class="err">尚無權限，為您登入一般模式</div>';
+        case 15:
+          echo '<div class="err">恭喜！權限設定成功</div>';
           break;
       }
     ?>
-    <h1 class="board__title">Comments</h1>
-    <form class="board__new-comment-form" method="POST" action="handle_add_comment.php">
-      <textarea name="content" rows="5" autofocus></textarea>
-      <?php if ($username) {?>
-        <!-- 如果有登入，給他送出按鈕 -->
-        <input class="board__submit-btn" type="submit" />
-        <?php } else {?>
-        <h3 class="err">登入後才能發布留言喔</h3> <!-- 如果沒有登入，跟他說要登入喔 -->
-      <?php }?>
-    </form>
+    <h1 class="board__title">管理者頁面</h1>
+    <p>權限值：管理者 > 一般使用者 > 遭停權使用者</p>
     <div class="board__hr"></div>
     <section>
       <?php
-        $sql = "select C.id, C.content, C.create_at, U.nickname, U.username from a_u_z_comments as C left join ".
-        "a_u_z_users as U on C.username = U.username where C.is_deleted is NULL order by C.id DESC limit ? offset ?";
+        $sql = "select * from a_u_z_users order by id DESC limit ? offset ?";
         $search_comments = $connect -> prepare($sql);
         $search_comments -> bind_param('ii', $limit, $offset);
         $search_comments_result = $search_comments -> execute();
@@ -103,20 +74,27 @@
               <?php echo prevent_XSS($row['nickname']);?>
               (<?php echo prevent_XSS($row['username']);?>)
             </span>
-            <span class="card__time"><?php echo prevent_XSS($row['create_at']); ?></span>
-            <?php if ($username == $row['username']) { ?>
-              <a class="a__btn" href="update_comment.php?id=<?php echo prevent_XSS($row['id'])?>">編輯</a>
-              <a class="a__btn" href="handle_delete_comment.php?id=<?php echo prevent_XSS($row['id'])?>">刪除</a>
-            <?php } ?>
+            
           </div>
-          <p class="card__content"><?php echo prevent_XSS($row['content']); ?></p>
+          <?php if ($row['role'] ==='2') {?>
+            <p class="card__content">權限：管理者</p>
+            <a class="access" href="handel_access.php?action=normal&username=<?php echo prevent_XSS($row['username'])?>">設為一般用戶</a>
+            <a class="access" href="handel_access.php?action=suspended&username=<?php echo prevent_XSS($row['username'])?>">設為停權者</a>
+          <?php }?>
+          <?php if ($row['role'] ==='1') {?>
+            <p class="card__content">權限：一般使用者</p><a class="access" href="handel_access.php?action=admin&username=<?php echo prevent_XSS($row['username'])?>">設為管理者</a>
+            <a class="access" href="handel_access.php?action=suspended&username=<?php echo prevent_XSS($row['username'])?>">設為停權者</a>
+          <?php }?>
+          <?php if ($row['role'] ==='0') {?>
+            <p class="card__content">權限：遭停權管理者</p><a class="access" href="handel_access.php?action=normal&username=<?php echo prevent_XSS($row['username'])?>">設為一般用戶</a>
+          <?php }?>
         </div>
       </div>
       <?php }?>
     </section>
     <div class="nav__page">
       <?php 
-        $sql = "select count(id) as count from a_u_z_comments where is_deleted is NUll";
+        $sql = "select count(id) as count from a_u_z_users";
         $last_page = last_page($limit, $sql);
         print_r(nav_page($page, $last_page, $website));
       ?>

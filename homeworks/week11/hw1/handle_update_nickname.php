@@ -6,8 +6,8 @@
         die();
     }
 
-    $nickname = $_POST['nickname'];
-    $username = $_SESSION['username'];
+    $nickname = htmlspecialchars($_POST['nickname']);
+    $username = htmlspecialchars($_SESSION['username']);
     $sql = "update a_u_z_users set nickname = ? where username = ?";
     $update_nickname = $connect -> prepare($sql);
     $update_nickname -> bind_param('ss',$nickname, $username);

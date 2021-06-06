@@ -1,9 +1,9 @@
 <?php
     require_once 'utility.php';
-    $nickname = $_POST['nickname'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $password2 = $_POST['password2'];
+    $nickname = htmlspecialchars($_POST['nickname']);
+    $username = htmlspecialchars($_POST['username']);
+    $password = htmlspecialchars($_POST['password']);
+    $password2 = htmlspecialchars($_POST['password2']);
     if (strlen($username) < 5) {
         header('Location:register.php?errCode=9');
         die();

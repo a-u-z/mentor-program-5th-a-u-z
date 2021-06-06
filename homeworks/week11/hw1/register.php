@@ -52,7 +52,7 @@
     <form class="board__new-comment-form" method="POST" action="handle_register.php">
       <div class="board__nickname">
         <span>暱稱：</span>
-        <input type="text" name="nickname" />
+        <input type="text" name="nickname" autofocus/>
       </div>
       <div class="board__nickname">
         <span>帳號：</span>

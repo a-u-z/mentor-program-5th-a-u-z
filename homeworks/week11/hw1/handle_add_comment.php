@@ -1,7 +1,7 @@
 <?php
     require_once 'utility.php';
-    $content = $_POST['content'];
-    $username = $_SESSION['username'];
+    $content = htmlspecialchars($_POST['content']);
+    $username = htmlspecialchars($_SESSION['username']);
 
 
     if (empty($content)) {

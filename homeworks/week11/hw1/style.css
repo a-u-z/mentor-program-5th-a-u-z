@@ -131,3 +131,42 @@ body {
 .hide{
   display: none;
 }
+.nav__page{
+  text-align: center;
+}
+.nav__page a{
+  color: #ffacae;
+  text-decoration: none;
+  display: inline-flex;
+  border: orchid solid 1px;
+  border-radius: 4px;
+  padding: 2px 5px 2px 5px;
+
+}
+.nav__page a:visited{
+  color: #ffacae;
+  text-decoration: none;
+  display: inline-flex;
+  border: orchid solid 1px;
+  border-radius: 4px;
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+}
+
+.nav__page span{
+  color: #ffacae;
+}
+.access{
+  text-decoration: none;
+  color: orchid;
+  border: orange solid 1px;
+  border-radius: 4px;
+  display: inline-flex;
+  padding: 5px;
+  margin-right: 10px;
+}
+.a__btn{
+  text-decoration: none;
+  color: red;
+  margin: 0px 5px;
+}

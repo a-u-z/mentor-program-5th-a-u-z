@@ -1,12 +1,12 @@
 <?php
   require_once 'utility.php';
-  !empty($_SESSION['username']) ? $username = $_SESSION['username'] : $username = null;
+  !empty($_SESSION['username']) ? $username = htmlspecialchars($_SESSION['username']) : $username = null;
   // 如果 session 抓的到 username 代表有登入，就可以讓 username = session 的 username
   // 如果抓不到，那 username 就是 NULL ，避免出現：Notice: Undefined index: username
-  !empty($_GET['errCode']) ? $errCode = $_GET['errCode'] : $errCode = null;
+  !empty($_GET['errCode']) ? $errCode = htmlspecialchars($_GET['errCode']) : $errCode = null;
   // 如果 get 抓的到 errCode 代表有錯誤碼，就可以讓 errCode = get 的 errCode
   // 如果抓不到，那 errCode 就是 NULL ，避免出現：Notice: Undefined index: errCode
-    $id =$_GET['id'];
+    $id = htmlspecialchars($_GET['id']);
     $sql = "select * from a_u_z_comments where id = ? and username = ?";
     $select_comment = $connect -> prepare($sql);
     $select_comment -> bind_param('is', $id, $username);
@@ -38,7 +38,7 @@
     ?>
     <h1 class="board__title">Comments</h1>
     <form class="board__new-comment-form" method="POST" action="handle_update_comment.php">
-      <textarea name="content" rows="5"><?php echo prevent_XSS($select_comment_result['content']);?></textarea>
+      <textarea autofocus name="content" rows="5"><?php echo prevent_XSS($select_comment_result['content']);?></textarea>
       <input class="hide" type="text" name="id" value=<?php echo prevent_XSS($id) ?>>
       <?php if ($username) {?>
         <!-- 如果有登入，給他送出按鈕 -->
