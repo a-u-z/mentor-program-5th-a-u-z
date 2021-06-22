@@ -15,12 +15,6 @@
     .todo:hover .btn-delete {
       opacity: 1;
     }
-    .btn-edit {
-        opacity: 0;
-    }
-    .todo:hover .btn-edit {
-        opacity: 1;
-    }
 
     input[type=checkbox]:checked ~ label {
       text-decoration: line-through;
@@ -87,10 +81,9 @@
   <script>
     const template =`<div class="todo {isChecked} list-group-item list-group-item-action justify-content-between align-items-center">
                         <div class="todo__content-wrapper custom-control custom-checkbox">
-                            <input type="checkbox" class="todo-checkbox custom-control-input" id="todo-{id}">
-                            <label class="todo__content custom-control-label" for="todo-{id}">{content}</label>
+                        <input type="checkbox" class="todo-checkbox custom-control-input" id="todo-{id}">
+                        <label class="todo__content custom-control-label" for="todo-{id}">{content}</label>
                         </div>
-                        <button type="button" class="btn-edit btn btn-danger">編輯</button>
                         <button type="button" class="btn-delete btn btn-danger">刪除</button>
                     </div>`
     const searchParams = new URLSearchParams(window.location.search)
@@ -117,6 +110,13 @@
         if (e.key === 'Enter') { // e.key 可以知道按下的是哪一個按鍵
             appendTodo()
         }
+    })
+    $('.todos').on('click', '.btn-delete', (e) => { // 選取 todo 最上層的 div 新增事件間聽器（ on ），
+        const parent = $(e.target).parent() // 必須要包成 jQuery 的物件，才可以操控，不然就只是單純的字串
+        const isChecked = parent.find('.todo-checkbox').is(':checked')
+        isChecked ? finished-- : unfinished--
+        parent.remove()
+        countUnfinished()
     })
     $('.todos').on('change', '.todo-checkbox', (e) => { // 選取 todo 最上層的 div 新增事件間聽器（ on ），change 當改變時啟動，呈現改變後的資訊
         const isChecked = ($(e.target).is(':checked')) // 必須要包成 jQuery 的物件，才可以操控，不然就只是單純的字串
@@ -145,8 +145,8 @@
         }
     })
     $('.btn-save').click(() => {
-        let todoList = [] // 宣告一個 list 等等塞東西進去
-        $('.todo').each((i, element) => { // i 是順序 element 符合條件的整個東西
+        const todoList = [] // 宣告一個 list 等等塞東西進去
+        $('.todo').each((i,element) => { // i 是順序 element 符合條件的整個東西
             const id = $(element).find('.todo-checkbox').attr('id').replace('todo-', '')
             const content = $(element).find('.todo__content').text() // val() 不行就換 text()
             const isChecked = $(element).hasClass('checked')
@@ -170,54 +170,6 @@
             }
         })
     })
-    $('.todos').on('click', '.btn-delete', (e) => { // 選取 todo 最上層的 div 新增事件監聽器（ on ），
-        const parent = $(e.target).parent() // 必須要包成 jQuery 的物件，才可以操控，不然就只是單純的字串
-        const isChecked = parent.find('.todo-checkbox').is(':checked')
-        isChecked ? finished-- : unfinished--
-        parent.remove()
-        countUnfinished()
-    })
-    let editId = ''
-    $('.todos').on('click', '.btn-edit', (e) => {  // 選取最上層的 div(todos) 來事件代理監聽器
-        const content = $(e.target).parent().find('.todo__content').text()
-        editId = $(e.target).parent().find('.todo-checkbox').attr('id').replace('todo-', '')
-        $('.btn-add').addClass('btn-comfirm-edit')
-        $('.input-group').children().remove()
-        $('.input-group').append(`
-            <input type="text" class="edit-todo form-control">
-            <div class="input-group-append">
-                <button class="btn btn-cancel-edit btn-outline-secondary" type="button">取消編輯</button>
-                <button class="btn btn-comfirm-edit btn-outline-secondary" type="button">確認編輯</button>
-            </div>`)
-        $('.edit-todo').val(content)
-        $('.edit-todo').focus()
-        $('.btn-comfirm-edit').click(() => { // 選取點擊按鈕，新增點擊事件監聽，如果「點擊」則執行
-            comfirmEditTodo(editId)
-
-        })
-        $('.edit-todo').keydown((e) => { // 選取輸入框，新增按下按鍵事件監聽，並傳送相關資訊「 e 」
-            if (e.key === 'Enter') { // e.key 可以知道按下的是哪一個按鍵
-                comfirmEditTodo(editId)
-            }
-        })
-        $('.btn-cancel-edit').click(() => { // 選取點擊按鈕，新增點擊事件監聽，如果「點擊」則執行
-            backToAddTodo()
-        })
-    })
-    function comfirmEditTodo(editId) {
-        const content = $('.edit-todo').val()
-        $('#todo-' + editId).parent().find('.todo__content').text(content)
-        backToAddTodo()
-    }
-    function backToAddTodo() {
-        $('.input-group').children().remove()
-        $('.input-group').append(`
-            <input type="text" class="input-todo form-control" placeholder="todo">
-            <div class="input-group-append">
-                <button class="btn btn-add btn-outline-secondary" type="button">新增</button>
-            </div>`
-        )
-    }
     function render(todos) {
         if (todos.length === 0) return
         console.log(todos.length)
@@ -229,7 +181,7 @@
                     .replace('{content}', todo.content)
                     .replace('{id}', todo.id)
                     .replace('{id}', todo.id)
-                    .replace('{isChecked}', todo.isChecked ? 'checked': '')
+                    .replace('{isChecked}', todo.isChecked)
             )
             if (todo.isChecked === true) { // 如果 isChecked 是 true ，代表要勾起來
                 $('#todo-' + todo.id).prop('checked', true) // 搜尋 id 是 todo-XX 的東西，設定 checked true
@@ -255,7 +207,6 @@
         $('.input-todo').val('')
         countUnfinished()
     }
-    
     function escapeHtml(unsafe) {
       return unsafe
            .replace(/&/g, "&amp;")
