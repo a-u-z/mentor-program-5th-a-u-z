@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+    <script src="./dist/main.js"></script>
+    <title>week13 留言板 plugin</title>
+</head>
+<script>
+    $(document).ready(() => { // 要等整個 DOM 結構準備好之後，才能夠執行 js ，不然抓不到東西
+        plugin.init({
+            secret_code: 'huli',
+            apiUrl: 'http://localhost/week13/hw2/',
+            containerSelector: '.comment-area'
+        }, commentData = {
+            count: 0,
+            limit: 5,
+            offset: 0,
+            select_div_comment: $('.div_comment'),
+        })
+        plugin.init({
+            secret_code: 'huli22',
+            apiUrl: 'http://localhost/week13/hw2/',
+            containerSelector: '.comment-area'
+        }, commentData = {
+            count: 0,
+            limit: 5,
+            offset: 0,
+            select_div_comment: $('.div_comment'),
+        })
+    })
+</script>
+<body>
+    <div class="container">
+        <div class="comment-area"></div>
+    </div>
+</body>
+</html>
