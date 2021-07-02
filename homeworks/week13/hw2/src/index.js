@@ -4,14 +4,12 @@ import { selectComment, countComment, insertComment, getFormTemplate } from './f
 
 let containerElement = null
 let comment = {}
-export { init as default }
-function init(options, commentData) {
+export function init(options, commentData) { // eslint-disable-line
   containerElement = $(options.containerSelector) // 搜尋到 comment-area，到時候會新增上模版的地方
   const formTemplate = getFormTemplate(options.secretCode)
   containerElement.append(formTemplate) // 新增模版上去
   console.log(options.secretCode)
   commentData.select_div_comment = $(`.${options.secretCode}_div_comment`) // 搜尋到模版上面的留言區
-  console.log(commentData.select_div_comment)
   selectComment(options, commentData)
   $(`.${options.secretCode}_comment_form`).submit((e) => {
     e.preventDefault()

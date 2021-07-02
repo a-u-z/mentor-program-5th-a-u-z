@@ -2,7 +2,7 @@
     require_once 'utility.php'; // 引入資料庫的帳密
     header('Content-type:application/json;charset=utf-8'); // 告訴瀏覽器要用 json 格式
     header('Access-Control-Allow-Origin: *');
-    if (empty($_POST['nickname']) || empty($_POST['content']) || empty($_POST['secret_code'])) {
+    if (empty($_POST['nickname']) || empty($_POST['content']) || empty($_POST['secretCode'])) {
         $json = array( // 如果有任何一個資料沒有輸入，排除錯誤
             'ok' => false, // 設定這一欄叫做 ok 他的值可以判斷是否 ok
             'message' => 'Please insert all data' // 跟要傳達的訊息
@@ -13,7 +13,7 @@
     }
     $nickname = $_POST['nickname']; // 把 post 的資料用變數拿出來
     $content = $_POST['content'];
-    $secret_code = $_POST['secret_code'];
+    $secret_code = $_POST['secretCode'];
 
     $sql = "insert into a_u_z_comments_v2(nickname, content, secret_code) values(?, ?, ?)"; // mySQL 插入資料語法
     $insert_comment = $connect -> prepare($sql); 

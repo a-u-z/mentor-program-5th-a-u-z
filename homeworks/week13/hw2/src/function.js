@@ -18,7 +18,7 @@ export function moreBtnApi(options, commentData, e) {
 }
 export function selectComment(options, commentData) {
   let comment = {}
-  $.ajax({ url: `${options.apiUrl}select_comment_api.php?secretCode=${options.secretCode}&limit=${commentData.limit}&offset=${commentData.offset}` }).done((data) => {
+  $.ajax({ url: `${options.apiUrl}select_comment_api.php?secret_code=${options.secretCode}&limit=${commentData.limit}&offset=${commentData.offset}` }).done((data) => {
     if (!data.ok) {
       alert(data.message)
       return
