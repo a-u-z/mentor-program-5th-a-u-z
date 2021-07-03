@@ -1,0 +1,154 @@
+@mixin border {
+    border: 1px solid #c2dffb;
+  }
+  @mixin basic {
+    padding: 10px;
+    @include border;
+    width: 100%;
+  }
+  @mixin btn {
+    padding: 10px 30px;
+    border: 1px solid #c2dffb;
+    border-radius: 5px;
+    color: black;
+    font-size: 16px;
+    background: white;
+    min-width: 20px;
+    text-decoration: none;
+    display: inline-block;
+  }
+  @mixin nav_pageA {
+    color: #ffacae;
+    text-decoration: none;
+    display: inline-flex;
+    border: orchid solid 1px;
+    border-radius: 4px;
+    padding: 2px 5px;
+  }
+  body {
+    margin: 0;
+    background: #f7f7f7;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  .warning {
+    background: #ffc4c6;
+    color: #a20606;
+    padding: 10px;
+    text-align: center;
+  }
+  .board {
+    background: white;
+    width: 100%;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 10px 30px;
+    box-shadow: 1px 1px 3px #e8e8e8;
+    border-radius: 5px;
+    &__new-comment-form textarea {
+      width: 100%;
+      padding: 10px;
+      @include border;
+    }
+    &__nickname {
+      margin-bottom: 10px;
+      input {
+        @include border;
+      }
+    }
+    &__submit-btn {
+      @include basic;
+      border-radius: 5px;
+      color: #583c63;
+      font-size: 16px;
+      background: white;
+    }
+    &__hr {
+      margin: 20px 0;
+      min-height: 70px;
+      display: flex;
+    }
+  }
+  .card {
+    margin: 20px 0;
+    min-height: 70px;
+    display: flex;
+    &__avatar {
+      min-width: 50px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #e4f0fb;
+    }
+    &__body {
+      margin-left: 10px;
+    }
+    &__content {
+      margin-top: 8px;
+      max-width: 100%;
+      word-break: break-all;
+      white-space: pre-line;
+    }
+    &__author {
+      color: #5c9edc;
+      font-weight: bold;
+    }
+    &__time {
+      color: #a0a0a0;
+    }
+  }
+  .err {
+    color: red;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .btn {
+    @include btn;
+  }
+  .update_nickname_button {
+    @include btn;
+    cursor: pointer;
+  }
+  .navbar {
+    display: flex;
+    justify-content: right;
+  }
+  .hint {
+    font-size: 15px;
+    color: red;
+    margin-left: 10px;
+    display: inline-flex;
+  }
+  .hide {
+    display: none;
+  }
+  .nav {
+    &__page {
+      text-align: center;
+      a {
+        @include nav_pageA;
+      }
+      a:visited {
+        @include nav_pageA;
+        margin: 2px;
+      }
+      span {
+        color: #ffacae;
+      }
+    }
+  }
+  .access {
+    text-decoration: none;
+    color: orchid;
+    border: orange solid 1px;
+    border-radius: 4px;
+    display: inline-flex;
+    padding: 5px;
+    margin-right: 10px;
+  }
+  .a__btn {
+    text-decoration: none;
+    color: red;
+    margin: 0px 5px;
+  }
