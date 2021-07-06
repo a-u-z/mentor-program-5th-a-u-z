@@ -3,9 +3,6 @@
   !empty($_SESSION['username']) ? $username = $_SESSION['username'] : $username = null;
   // 如果 session 抓的到 username 代表有登入，就可以讓 username = session 的 username
   // 如果抓不到，那 username 就是 NULL ，避免出現：Notice: Undefined index: username
-  !empty($_GET['errCode']) ? $errCode = $_GET['errCode'] : $errCode = null;
-  // 如果 get 抓的到 errCode 代表有錯誤碼，就可以讓 errCode = get 的 errCode
-  // 如果抓不到，那 errCode 就是 NULL ，避免出現：Notice: Undefined index: errCode
   $page = 1;
   if (!empty($_GET['page'])) {
     $page = $_GET['page'];
@@ -29,11 +26,11 @@
   </header>
   <main class="board">
     <div>
-      <?php if ($username || $errCode) {?> 
+      <?php if ($username) {?> 
         <!-- 如果有 username（有登入），給他登出按鈕和歡迎詞 -->
         <a class="btn" href="handle_logout.php">登出</a>
         <span class="update_nickname_button">更改暱稱</span>
-        <h3>歡迎您回來！！<?php echo prevent_XSS($username) ?> 大人</h3>
+        <h3>歡迎您回來！！<?php echo htmlspecialchars($username) ?> 大人</h3>
         <?php } else {?>
         <!-- 沒有的話給他註冊、登入二選一 -->
         <a class="btn" href="register.php">註冊</a>
@@ -47,32 +44,8 @@
       </div>
     </div>
     <?php
-      switch ($errCode) {
-        case 3:
-          echo '<div class="err">請輸入留言後再次送出</div>';
-          break;
-        case 4:
-          echo '<div class="err">註冊成功，已完成登入</div>';
-          break;
-        case 9:
-          echo '<div class="err">未輸入暱稱，請重新輸入</div>';
-          break;
-        case 10:
-          echo '<div class="err">恭喜！暱稱更改成功</div>';
-          break;
-        case 11:
-          echo '<div class="err">恭喜！評論更改成功</div>';
-          break;
-        case 12:
-          echo '<div class="err">恭喜！評論刪除成功</div>';
-          break;
-        case 13:
-          echo '<div class="err">恭喜！評論新增成功</div>';
-          break;
-        case 14:
-          echo '<div class="err">尚無權限，為您登入一般模式</div>';
-          break;
-      }
+      !empty($_POST['message']) ? $message = $_POST['message'] : $message = null;
+      echo '<div class="err">'. $message .'</div>';
     ?>
     <h1 class="board__title">Comments</h1>
     <form class="board__new-comment-form" method="POST" action="handle_add_comment.php">
@@ -100,16 +73,16 @@
         <div class="card__body">
           <div class="card__info">
             <span class="card__author">
-              <?php echo prevent_XSS($row['nickname']);?>
-              (<?php echo prevent_XSS($row['username']);?>)
+              <?php echo htmlspecialchars($row['nickname']);?>
+              (<?php echo htmlspecialchars($row['username']);?>)
             </span>
-            <span class="card__time"><?php echo prevent_XSS($row['create_at']); ?></span>
+            <span class="card__time"><?php echo htmlspecialchars($row['create_at']); ?></span>
             <?php if ($username == $row['username']) { ?>
-              <a class="a__btn" href="update_comment.php?id=<?php echo prevent_XSS($row['id'])?>">編輯</a>
-              <a class="a__btn" href="handle_delete_comment.php?id=<?php echo prevent_XSS($row['id'])?>">刪除</a>
+              <a class="a__btn" href="update_comment.php?id=<?php echo htmlspecialchars($row['id'])?>">編輯</a>
+              <a class="a__btn" href="handle_delete_comment.php?id=<?php echo htmlspecialchars($row['id'])?>">刪除</a>
             <?php } ?>
           </div>
-          <p class="card__content"><?php echo prevent_XSS($row['content']); ?></p>
+          <p class="card__content"><?php echo htmlspecialchars($row['content']); ?></p>
         </div>
       </div>
       <?php }?>
@@ -128,5 +101,4 @@
     </script>
   </main>
 </body>
-
 </html>

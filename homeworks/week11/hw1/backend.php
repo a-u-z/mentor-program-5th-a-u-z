@@ -33,7 +33,7 @@
         <!-- 如果有 username（有登入），給他登出按鈕和歡迎詞 -->
         <a class="btn" href="handle_logout.php">登出</a>
         <span class="update_nickname_button">更改暱稱</span>
-        <h3>歡迎您回來！！<?php echo prevent_XSS($username) ?> 管理者大人</h3>
+        <h3>歡迎您回來！！<?php echo htmlspecialchars($username) ?> 管理者大人</h3>
         <?php } ?>
       <div class="anchor hide">
           <form action="handle_update_nickname.php" method="POST">
@@ -42,17 +42,8 @@
       </div>
     </div>
     <?php
-      switch ($errCode) {
-        case 3:
-          echo '<div class="err">請輸入留言後再次送出</div>';
-          break;
-        case 4:
-          echo '<div class="err">註冊成功，已完成登入</div>';
-          break;
-        case 15:
-          echo '<div class="err">恭喜！權限設定成功</div>';
-          break;
-      }
+      !empty($_POST['message']) ? $message = $_POST['message'] : $message = null;
+      echo'<div class="err">'. $message .'</div>';
     ?>
     <h1 class="board__title">管理者頁面</h1>
     <p>權限值：管理者 > 一般使用者 > 遭停權使用者</p>
@@ -71,22 +62,21 @@
         <div class="card__body">
           <div class="card__info">
             <span class="card__author">
-              <?php echo prevent_XSS($row['nickname']);?>
-              (<?php echo prevent_XSS($row['username']);?>)
+              <?php echo htmlspecialchars($row['nickname']);?>
+              (<?php echo htmlspecialchars($row['username']);?>)
             </span>
-            
           </div>
           <?php if ($row['role'] ==='2') {?>
             <p class="card__content">權限：管理者</p>
-            <a class="access" href="handel_access.php?action=normal&username=<?php echo prevent_XSS($row['username'])?>">設為一般用戶</a>
-            <a class="access" href="handel_access.php?action=suspended&username=<?php echo prevent_XSS($row['username'])?>">設為停權者</a>
+            <a class="access" href="handel_access.php?action=normal&username=<?php echo htmlspecialchars($row['username'])?>">設為一般用戶</a>
+            <a class="access" href="handel_access.php?action=suspended&username=<?php echo htmlspecialchars($row['username'])?>">設為停權者</a>
           <?php }?>
           <?php if ($row['role'] ==='1') {?>
-            <p class="card__content">權限：一般使用者</p><a class="access" href="handel_access.php?action=admin&username=<?php echo prevent_XSS($row['username'])?>">設為管理者</a>
-            <a class="access" href="handel_access.php?action=suspended&username=<?php echo prevent_XSS($row['username'])?>">設為停權者</a>
+            <p class="card__content">權限：一般使用者</p><a class="access" href="handel_access.php?action=admin&username=<?php echo htmlspecialchars($row['username'])?>">設為管理者</a>
+            <a class="access" href="handel_access.php?action=suspended&username=<?php echo htmlspecialchars($row['username'])?>">設為停權者</a>
           <?php }?>
           <?php if ($row['role'] ==='0') {?>
-            <p class="card__content">權限：遭停權管理者</p><a class="access" href="handel_access.php?action=normal&username=<?php echo prevent_XSS($row['username'])?>">設為一般用戶</a>
+            <p class="card__content">權限：遭停權管理者</p><a class="access" href="handel_access.php?action=normal&username=<?php echo htmlspecialchars($row['username'])?>">設為一般用戶</a>
           <?php }?>
         </div>
       </div>
