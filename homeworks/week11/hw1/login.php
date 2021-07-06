@@ -19,18 +19,8 @@
     <h1 class="board__title">登入</h1>
     <?php
       require_once 'utility.php';
-      !empty($_GET['errCode']) ? $errCode = $_GET['errCode'] : $errCode = null;
-      // 如果 get 抓的到 errCode 代表有錯誤碼，就可以讓 errCode = get 的 errCode
-      // 如果抓不到，那 errCode 就是 NULL ，避免出現：Notice: Undefined index: errCode
-      if ($errCode === '1') {
-          echo '<div class="err">資料不齊全，請再輸入一次</div>';
-      }
-      if ($errCode === '2') {
-          echo '<div class="err">帳號或是密碼錯誤，請再輸入一次</div>';
-      }
-      if ($errCode === '4') {
-          echo '<div class="err">帳號已註冊成功，請登入</div>';
-      }
+      !empty($_POST['message']) ? $message = $_POST['message'] : $message = null;
+      echo '<div class="err">'. $message .'</div>';
     ?>
     <form class="board__new-comment-form" method="POST" action="handle_login.php">
       <div class="board__nickname">
