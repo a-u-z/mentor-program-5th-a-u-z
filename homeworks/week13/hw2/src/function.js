@@ -1,32 +1,34 @@
 import $ from 'jquery' // eslint-disable-line
 
-export function countComment(options, commentData, e) {
-  $.ajax({ url: `${options.apiUrl}count_comment_api.php` }).done((data) => {
+export function countComment(options, commentData) {
+  $.ajax({ url: `${options.apiUrl}count_comment_api.php?secretCode=${options.secretCode}` }).done((data) => {
     if (!data.ok) {
       alert(data.message)
       return
     }
     commentData.count = data.count
-    moreBtnApi(options, commentData, e)
+    console.log(commentData.count)
   })
 }
-export function moreBtnApi(options, commentData, e) {
-  if (commentData.offset >= commentData.count - commentData.limit) {
-    $(e.target).hide()
+export function isMoreBtn(options, commentData, e) {
+  if (commentData.count <= commentData.offset + commentData.limit) {
+    e ? $(e.target).hide() : $(`.${options.secretCode}`).hide()
   }
-  selectComment(options, commentData)
 }
-export function selectComment(options, commentData) {
+export function selectComment(options, commentData, e) {
   let comment = {}
   $.ajax({ url: `${options.apiUrl}select_comment_api.php?secret_code=${options.secretCode}&limit=${commentData.limit}&offset=${commentData.offset}` }).done((data) => {
     if (!data.ok) {
       alert(data.message)
+      console.log('123')
       return
     }
     const comments = data.comment
     for (comment of comments) {
       appendComment(commentData, comment, false)
     }
+    isMoreBtn(options, commentData, e)
+    commentData.offset += commentData.limit
   })
 }
 export function insertComment(options, comment, commentData) {
@@ -42,6 +44,7 @@ export function insertComment(options, comment, commentData) {
     appendComment(commentData, comment, true)
     $(`input[name=${options.secretCode}_nickname]`).val('')
     $(`textarea[name=${options.secretCode}_content]`).val('')
+    isClicked = false // eslint-disable-line
   })
 }
 export function getFormTemplate(secretCode) {
@@ -55,10 +58,10 @@ export function getFormTemplate(secretCode) {
                                     <label for="content_textarea" class="form-label">留言內容</label>
                                     <textarea name="${secretCode}_content" class="form-control" id="content_textarea" rows="3"></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-primary">送出</button>
+                                <button type="submit" class="${secretCode}SubmitBtn btn btn-primary">送出</button>
                             </form>
                             <div class="${secretCode}_div_comment"></div>
-                            <button class="btn btn-primary more_comments_btn">載入更多</button>
+                            <button class="${secretCode} btn btn-primary more_comments_btn">載入更多</button>
                         </div>`
   return formTemplate
 }
