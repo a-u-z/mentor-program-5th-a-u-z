@@ -7,7 +7,7 @@ export function countComment(options, commentData) {
       return
     }
     commentData.count = data.count
-    console.log(commentData.count)
+    selectComment(options, commentData)
   })
 }
 export function isMoreBtn(options, commentData, e) {
@@ -20,7 +20,6 @@ export function selectComment(options, commentData, e) {
   $.ajax({ url: `${options.apiUrl}select_comment_api.php?secret_code=${options.secretCode}&limit=${commentData.limit}&offset=${commentData.offset}` }).done((data) => {
     if (!data.ok) {
       alert(data.message)
-      console.log('123')
       return
     }
     const comments = data.comment

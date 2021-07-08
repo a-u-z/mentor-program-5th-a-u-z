@@ -16,7 +16,6 @@ export function init(options, div_comment) { // eslint-disable-line
   containerElement.append(formTemplate) // 新增模版上去
   commentData.select_div_comment = $(`.${options.secretCode}_div_comment`) // 搜尋到模版上面的留言區
   countComment(options, commentData)
-  selectComment(options, commentData)
   let isClicked = false
   $(`.${options.secretCode}SubmitBtn`).on('click', () => {
     if (isClicked) return
