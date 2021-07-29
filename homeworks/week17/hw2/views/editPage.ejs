@@ -1,0 +1,33 @@
+<%- include ('./template/cmsHeader') %>
+<%- include ('./template/normalNavbar') %>
+
+<body>
+  <div class="photo" id="bg__photo">
+    <div class="cms__box">
+      <div class="title">後台管理系統</div>
+      <div class="cms__draw__box__detail__wrapper">
+        <table>
+          <tr>
+            <th class="prize__number">獎次</th>
+            <th class="description">內容</th>
+            <th class="image">圖片 url</th>
+            <th class="probability">機率（%）</th>
+            <th class="function">功能</th>
+          </tr>
+          
+          <tr>
+            <form action="/hand-edit/<%= result.id%>" method="POST">
+            <td><input type="text" name="prize" value="<%= result.prize %>"></td>
+            <td><input type="text" name="description" value="<%= result.description %>"></td>
+            <td><input type="text" name="image" value="<%= result.image %>"></td>
+            <td><input type="text" name="probability" value="<%= result.probability %>"></td>
+            <td>
+            <input class="edit" type="submit" value="儲存變更">
+            </form>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+<%- include ('./template/footer') %>
