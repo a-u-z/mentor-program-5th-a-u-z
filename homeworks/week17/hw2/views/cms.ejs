@@ -1,0 +1,44 @@
+<%- include ('./template/cmsHeader') %>
+<%- include ('./template/normalNavbar') %>
+
+<body>
+  <div class="photo" id="bg__photo">
+    <div class="cms__box">
+      <div class="title">後台管理系統</div>
+      <div class="cms__draw__box__detail__wrapper">
+        <table id="table">
+          <tr>
+            <th class="prize__number">獎次</th>
+            <th class="description">內容</th>
+            <th class="image">圖片 url</th>
+            <th class="probability">機率（%）</th>
+            <th class="function">功能</th>
+          </tr>
+          <tr>
+            <input type="hidden" name="id">
+            <td><input type="text" name="prize" placeholder="請輸入獎次" autofocus></td>
+            <td ><input type="text" name="description" placeholder="請輸入內容"></td>
+            <td ><input type="text" name="image" placeholder="請輸入圖片 url"></td>
+            <td ><input type="text" name="probability" placeholder="請輸入機率"></td>
+            <td>
+              <button class="add" >新增獎項</button>
+            </td>
+          </tr>
+          <% for( prize of prizes) { %>
+          <tr>
+            <input type="hidden" name="id" value="<%= prize.id %>">
+            <td><input type="text" name="prize" value="<%= prize.prize %>"></td>
+            <td ><input type="text" name="description" value="<%= prize.description %>"></td>
+            <td ><input type="text" name="image" value="<%= prize.image %>"></td>
+            <td ><input type="text" name="probability" value="<%= prize.probability %>"></td>
+            <td>
+              <button class="edit" >送出編輯</button><button class="delete" >刪除</button>
+            </td>
+          </tr>
+          <% } %>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+<%- include ('./template/footer') %>

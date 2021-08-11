@@ -1,0 +1,66 @@
+<% 
+const baseUrl = '/blog/'
+function nav_page(page, lastPage, baseUrl) {
+  pageTemplate = ''
+  if (lastPage <= 5) {
+    for (let i = 1; i <= lastPage; i++) {
+      if (i != page) {
+        pageTemplate += `<a href="${baseUrl}${i}">${i}</a>`
+      }
+      if (i == page) {
+        pageTemplate += `<span>${i}</span>`
+      }
+    }
+  } else {
+    let leftEllipsis = 0
+    let rightEllipsis = 0
+    for (let i = 1; i <= lastPage; i++) {
+      if (i == 1 && page != 1) {
+        pageTemplate += `<a href="${baseUrl}1">1</a>`
+      } else if (abs(i - page) < 2 ) {
+        pageTemplate += `<a href="${baseUrl}${i}">${i}</a>`
+      } else if (i == lastPage && page != lastPage) {
+        pageTemplate += `<a href="${baseUrl}${lastPage}">${lastPage}</a>`
+      } else {
+        if (page > i && leftEllipsis == 0) {
+          pageTemplate += `<span>...</span>`
+          leftEllipsis ++
+        }
+        if (i > page && rightEllipsis == 0) {
+          pageTemplate += `<span>...</span>`
+          rightEllipsis ++
+        }
+      }
+    }
+  }
+  return pageTemplate
+}
+nav_page(page, lastPage, baseUrl)
+%> 
+<%- include('./template/header') %>
+<body>
+  <%- include('./template/navbar') %>
+  <div class="container-wrapper">
+    <div class="posts">
+      <% for (row of rows) {%> 
+        <article class="post">
+          <div class="post__header">
+            <div><%= row.dataValues.title%></div>
+          </div>
+          <div class="post__info"><%= row.dataValues.createdAt%></div>
+          <% if (row.dataValues.content.length > 199) { %>
+
+          <div class="post__content"><%= row.dataValues.content.substring(0, 200) + "....." %> </div>
+          <a class="btn-read-more" href="/chosen-article/<%- row.dataValues.id %>">READ MORE</a>
+          <% } else {%>
+            <div class="post__content"><%= row.dataValues.content %> </div>
+            <% } %>
+        </article>
+      <% } %>
+    </div>
+</div>
+<div  class="nav__page">
+  <%- pageTemplate %>
+</div>
+<%- include('./template/footer') %>
+
