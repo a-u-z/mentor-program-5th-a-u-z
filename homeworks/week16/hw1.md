@@ -22,7 +22,7 @@ console.log(5)
 3. 執行第五行：印出 3
 4. 執行第六行：將 setTimeout() ， 內容是叫瀏覽器設定 0 毫秒後執行 setTimeout() 的第一個參數。因為是 0 毫秒，所以直接到 Task Queue 排隊
 5. 執行第九行：印出 5
-6. 因為有 Event Loop 機制， Stack 都清空了，回到 task queue，因為先進先出，將 task queue 排隊的事件 `() => { console.log(2)}` 放入 Stack ，先印出 2，完成後 pop ，再將 `() => { console.log(4)}` 放入 Stack，再印出 4 
+6. 因為有 Event Loop 機制，Call Stack 清空了（Stack 是一種資料結構，JS 選擇使用 Stack 作為 Call Stack 的資料結構），回到 task queue，因為先進先出，將 task queue 排隊的事件 `() => { console.log(2)}` 放入 Stack ，先印出 2，完成後 pop ，再將 `() => { console.log(4)}` 放入 Stack，再印出 4 
 
 
 
