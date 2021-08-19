@@ -69,14 +69,13 @@ async function showStreamBox(url) {
     console.log(`errorMessage:${e}`)
   }
 }
-async function navbarSelect() {
+function navbarSelect() {
   document.querySelector('.navbar__game').addEventListener('click', (e) => { // 搜尋新的遊戲
     const nowSearch = e.target.closest('span').innerHTML // 設定現在點到的是哪個遊戲，取出名字
     if (e.target.classList.contains('topGame')) {
       document.querySelector('.box__wrapper').innerHTML = '' // 把 box 都清掉
       const isAlive = document.querySelector('.alive') // 搜尋之前是否有加上 alive 過
       isAlive ? isAlive.classList.remove('alive') : '' // eslint-disable-line
-      // 如果有，移除它，沒有的話，不做事情
       document.querySelector('.game__name').innerHTML = nowSearch // 把現在遊戲的名字改成 現在搜出來的
     }
     const nowSearchUrl = `https://api.twitch.tv/kraken/streams/?game=${nowSearch}&limit=20` // 這次的網址，要搜的是現在的遊戲
