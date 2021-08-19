@@ -1,0 +1,23 @@
+<%- include ('./template/cmsHeader') %>
+<%- include ('./template/normalNavbar') %>
+
+<body>
+  <div class="photo" id="bg__photo">
+    <form class="draw__box" id="layout" action="/handle-login" method="POST">
+      <div class="title">後台管理系統</div>
+      <div class="draw__box__detail__wrapper">
+        <div class="warning"><%= errorMessage %> </div>
+        <div class="draw__box__detail">
+            <h2>帳號：</h2>
+            <input type="text" name="username" autofocus>
+        </div>
+        <div class="draw__box__detail">
+            <h2>密碼：</h2>
+          <input type="text" name="password">
+        </div>
+      </div>
+      <input class="login__btn" type="submit" value="提交">
+    </form>
+  </div>
+</body>
+<%- include ('./template/footer') %>

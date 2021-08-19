@@ -1,0 +1,27 @@
+<%- include('./template/header') %>
+<body>
+  <%- include('./template/navbar') %>
+  <div class="login-wrapper">
+    <h2>Register</h2>
+    <form action="/handle-register" method="POST">
+      <div class="input__wrapper">
+        <div class="input__label">AUTHOR</div>
+        <input class="input__field" type="text" name="author" />
+      </div>
+      <div class="input__wrapper">
+        <div class="input__label">PASSWORD</div>
+        <% if (errMessage) { %>
+        <span class="warning"> <%= errMessage %> </span>
+        <% } else { %>
+        <span class="warning">要由數字和大小寫英文字母組成，至少六碼喔</span>
+        <% } %>
+        <input class="input__field" type="password" name="password" />
+      </div>
+      <div class="input__wrapper">
+        <div class="input__label">PASSWORD AGAIN</div><span class="warning">請在輸入一次密碼，用以確保正確</span>
+        <input class="input__field" type="password" name="password2" />
+      </div>
+      <input type='submit' value="註冊" />
+    </form>
+  </div>
+<%- include('./template/footer') %>

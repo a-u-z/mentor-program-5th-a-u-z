@@ -1,0 +1,21 @@
+<%- include('./template/header') %>
+<body>
+  <%- include('./template/navbar') %>
+  <div class="container-wrapper">
+    <div class="container">
+      <% for (result of results){ %>
+        <div class="admin-posts">
+          <div class="admin-post">
+            <div class="admin-post__title"><%= result.dataValues.title %></div>
+            <div class="admin-post__info">
+              <div class="admin-post__created-at"><%= result.dataValues.created_at %></div>
+              <a class="admin-post__btn" href="/edit-page/<%- result.dataValues.id%>">編輯</a>
+              <a class="admin-post__btn" href="handle-delete/<%- result.dataValues.id%>">刪除</a>
+            </div>
+          </div>
+        </div>
+      <% } %>  
+    </div>
+  </div>
+</div>
+<%- include('./template/footer') %>

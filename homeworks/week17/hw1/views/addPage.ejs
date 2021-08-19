@@ -1,0 +1,24 @@
+<%- include('./template/header') %>
+<body>
+  <%- include('./template/navbar') %>
+  <div class="container-wrapper">
+    <div class="container">
+      <div class="edit-post">
+        <form action="/handle-add" method="POST">
+          <div class="edit-post__title">
+            發表文章：
+          </div>
+          <div class="edit-post__input-wrapper">
+            <input name='title'class="edit-post__input" placeholder="請輸入文章標題" />
+          </div>
+          <div class="edit-post__input-wrapper">
+            <textarea name='content' rows="20" class="edit-post__content"></textarea>
+          </div>
+          <div class="edit-post__btn-wrapper">
+            <input class="edit-post__btn" type="submit" value='送出'>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<%- include('./template/footer') %>
