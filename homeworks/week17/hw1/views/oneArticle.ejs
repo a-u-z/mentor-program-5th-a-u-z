@@ -1,0 +1,15 @@
+<%- include('./template/header') %>
+<body>
+  <%- include('./template/navbar') %>
+  <div class="container-wrapper">
+    <div class="posts">
+        <article class="post">
+          <div class="post__header">
+            <div><%= result.dataValues.title %></div>
+          </div>
+          <div class="post__info"><%= result.dataValues.createdAt %></div>
+          <div class="post__content"><%= result.dataValues.content %> </div>
+        </article>
+    </div>
+</div>
+<%- include('./template/footer') %>
