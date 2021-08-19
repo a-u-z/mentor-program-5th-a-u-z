@@ -3,10 +3,9 @@
   !empty($_SESSION['username']) ? $username = htmlspecialchars($_SESSION['username']) : $username = null;
   // 如果 session 抓的到 username 代表有登入，就可以讓 username = session 的 username
   // 如果抓不到，那 username 就是 NULL ，避免出現：Notice: Undefined index: username
-  !empty($_GET['errCode']) ? $errCode = htmlspecialchars($_GET['errCode']) : $errCode = null;
   // 如果 get 抓的到 errCode 代表有錯誤碼，就可以讓 errCode = get 的 errCode
   // 如果抓不到，那 errCode 就是 NULL ，避免出現：Notice: Undefined index: errCode
-    $id = htmlspecialchars($_GET['id']);
+    $id = htmlspecialchars($_REQUEST['id']);
     $sql = "select * from a_u_z_comments where id = ? and username = ?";
     $select_comment = $connect -> prepare($sql);
     $select_comment -> bind_param('is', $id, $username);
@@ -29,17 +28,16 @@
   </header>
   <main class="board">
     <div>
-        <h3>歡迎您回來！！<?php echo prevent_XSS($username) ?> 大人</h3>
+        <h3>歡迎您回來！！<?php echo htmlspecialchars($username) ?> 大人</h3>
     </div>
     <?php
-      if ($errCode === '3') {
-          echo '<div class="err">請輸入留言後再次送出</div>';
-      }
+     !empty($_POST['message']) ? $message = $_POST['message'] : $message = null;
+     echo '<div class="err">'. $message .'</div>';
     ?>
     <h1 class="board__title">Comments</h1>
     <form class="board__new-comment-form" method="POST" action="handle_update_comment.php">
-      <textarea autofocus name="content" rows="5"><?php echo prevent_XSS($select_comment_result['content']);?></textarea>
-      <input class="hide" type="text" name="id" value=<?php echo prevent_XSS($id) ?>>
+      <textarea autofocus name="content" rows="5"><?php echo htmlspecialchars($select_comment_result['content']);?></textarea>
+      <input class="hide" type="text" name="id" value=<?php echo htmlspecialchars($id) ?>>
       <?php if ($username) {?>
         <!-- 如果有登入，給他送出按鈕 -->
         <input class="board__submit-btn" type="submit" />
